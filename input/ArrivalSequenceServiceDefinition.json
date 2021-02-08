@@ -1,0 +1,598 @@
+{
+  "$schema": "./SWIM Registry Schema - COMP - GENERATED.json",
+  "informationService": {
+    "name": "Arrival Sequence Service",
+    "version": "1.0",
+    "serviceAbstract": "The Commission Implementing Regulation (EU) No 716/2014 requires the upgrade of existing AMAN to provide connection with cooperative En-Route Air Traffic Service Units (ATSU) to coordinate the actions to be taken by the cooperative ATSUs to make the correct time adjustment to flights under their control, in order to get the best and most efficient arriving flight sequence at the relevant airports based on AMAN arriving planning tool. One way to implement the necessary coordination between AMAN systems and cooperative ATSUs is to implement a dedicated SWIM service between these entities.",
+    "descriptionInformation": {
+      "abbreviations": [
+        {
+          "name": "ATSU",
+          "description": "Air Traffic Service Unit"
+        },
+        {
+          "name": "AMAN",
+          "description": "Arrival Management"
+        },
+        {
+          "name": "SWIM",
+          "description": "System Wide Information Management"
+        },
+        {
+          "name": "AIRM",
+          "description": "ATM Information Reference Model"
+        }
+      ],
+      "serviceDescriptionIdentification": {
+        "serviceDescriptionEdition": "0.1",
+        "serviceDescriptionReferenceDate": "2020-01-23",
+        "serviceDescriptionTitle": "Service Definition of the SWIM Arrival Sequence Service defined in EUROCAE ED-254."
+      }
+    },
+    "serviceCategorisation": {
+      "applicationMessageExchangePattern": [
+        "PUBLISH_SUBSCRIBE_WITH_PUSH_MECHANISM"
+      ],
+      "businessActivityType": [
+        "AERODROME_OPERATION"
+      ],
+      "informationCategory": [
+        "COOPERATIVE_NETWORK_INFORMATION_EXCHANGE"
+      ],
+      "intendedConsumer": [
+        "CIVIL_AIRSPACE_USER"
+      ],
+      "serviceType": "DEFINITION",
+      "lifeCycleStage": "PROSPECTIVE"
+    },
+    "serviceDescriptionReferences": {
+      "implementedStandard": [
+        {
+          "title": "Arrival Sequence Service Performance Standard",
+          "description": "Standardised SWIM service design for an AMAN Sequence Service. This standardised service design follows the specification documents for service descriptions as provided by EUROCONTROL. Together with them, it can be used as a basis to implement SWIM Service instances. ",
+          "isConformant": true,
+          "standardType": "SERVICE_STANDARD",
+          "conformanceStatement": "Conformant",
+          "reference": "https://eshop.eurocae.net/eurocae-documents-and-reports/ed-254/#",
+          "version": "June 2018"
+        },
+        {
+          "title": "EUROCONTROL Specification for SWIM Service Description",
+          "description": "The Arrival Sequence Service is conformant with the SWIM Service Description Specification.",
+          "isConformant": true,
+          "standardType": "EUROCONTROL_SPECIFICATION_FOR_SWIM_SERVICE_DESCRIPTION",
+          "conformanceStatement": "Conformant",
+          "reference": "https://www.eurocontrol.int/publication/eurocontrol-specification-swim-service-description-sd",
+          "version": "1.0"
+        },
+        {
+          "title": "EUROCONTROL Specification for SWIM Information Definition",
+          "description": "The Arrival Sequence Service is conformant with the SWIM Information Definition Specification.",
+          "isConformant": true,
+          "standardType": "EUROCONTROL_SPECIFICATION_FOR_SWIM_INFORMATION_DEFINITION",
+          "conformanceStatement": "Conformant",
+          "reference": "https://www.eurocontrol.int/publication/eurocontrol-specification-swim-information-definition",
+          "version": "1.0"
+        },
+        {
+          "title": "EUROCONTROL Specification for SWIM TI Yellow Profile",
+          "description": "The Arrival Sequence Service is conformant with the SWIM TI Yellow Profile Specification.",
+          "isConformant": true,
+          "standardType": "EUROCONTROL_SPECIFICATION_FOR_SWIM_TECHNICAL_INFRASTRUCTURE",
+          "conformanceStatement": "Conformant",
+          "reference": "https://www.eurocontrol.int/sites/default/files/2020-07/eurocontrol-swim-spec-tiyp-1-1.pdf",
+          "version": "1.1"
+        }
+      ]
+    },
+    "serviceTechnicalDescription": {
+      "serviceMonitoring": {
+        "monitoringDescription": "The ArrivalSequenceProvider shall offer technical functions to the consumer to continuously monitor the service availability."
+      }
+    },
+    "serviceInterface": [
+      {
+        "name": "ArrivalSequenceInformationPublisherREST",
+        "interfaceBindingDescription": "Mutual Server-Client authentication will be performed via TLS using X.509 certificates.",
+        "description": "REST Subscription Interface. This interface is one of the two implementation alternatives of the ArrivalSequenceInformationPublisher interface.",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_WS_LIGHT",
+        "tiPrimitiveMessageExchangePattern": "SYNCHRONOUS_REQUEST_RESPONSE",
+        "behaviour": [
+          {
+            "name": "Arrival Sequence Publisher Behaviour",
+            "description": "Section 3.6.4.1 of the Arrival Sequence Service Performance Standard document."
+          }
+        ],
+        "operation": [
+          {
+            "description": "Create a new subscription resource",
+            "idempotency": "IDEMPOTENT",
+            "name": "subscribeToArrivalSequenceInformation",
+            "operationMessage": [
+              {
+                "name": "SubscriptionRequest",
+                "headers": "Authorization, for instance X-WSSE (for non-webserver authorization)",
+                "isFault": false,
+                "direction": "IN",
+                "description": "Request message to create a subscription.",
+                "body": "An instance of urn:x-eurocae-example:service:aman:mes/SubscriptionRequest"
+              },
+              {
+                "name": "SubscriptionResponse",
+                "headers": "201 Created, Host, Content-Length, Content-Type: application/xml, WWW-Authenticate (on status 401)",
+                "isFault": false,
+                "direction": "OUT",
+                "description": "Response message to successful subscription.",
+                "body": "An instance of urn:x-eurocae-example:service:aman:mes/SubscriptionResponse"
+              },
+              {
+                "name": "NotModified",
+                "headers": "304 Not Modified, Host, Content-Length, Content-Type: application/xml",
+                "isFault": false,
+                "direction": "OUT",
+                "description": "Sent if the same subscription request – identified by subscriberTransactionID – is received multiple times. Asserts idempotency of POST implementation",
+                "body": "An instance of urn:x-eurocae-example:service:aman:mes/SubscriptionResponse"
+              },
+              {
+                "name": "BadRequest",
+                "headers": "400 Bad Request, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of malformed request data."
+              },
+              {
+                "name": "Unauthorized",
+                "headers": "401 Unauthorized, Host, WWW-Authenticate",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of non-authorized request."
+              },
+              {
+                "name": "NotFound",
+                "headers": "404 Not Found, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of wrong URL"
+              },
+              {
+                "name": "Conflict",
+                "headers": "409 Conflict, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of an already subscribed consumer."
+              },
+              {
+                "name": "InternalServerError",
+                "headers": "500 Internal Server Error, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case an unexpected error occurred while processing the request."
+              },
+              {
+                "name": "ServiceUnavailable",
+                "headers": "503 Service Unavailable, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response returned in case the service is not available."
+              }
+            ],
+            "synchronicity": "SYNCHRONOUS",
+            "tiProtocolMethod": [
+              "POST"
+            ]
+          },
+          {
+            "description": "Obtain information of a particular subscription.",
+            "idempotency": "IDEMPOTENT",
+            "name": "getSubscriptionInformation",
+            "precondition": "The subscription must have been created before.",
+            "operationMessage": [
+              {
+                "name": "GetSubscriptionRequest",
+                "headers": "Authorization, for instance X-WSSE (for non-webserver authorization)",
+                "isFault": false,
+                "direction": "IN",
+                "description": "Request message to create a subscription."
+              },
+              {
+                "name": "SubscriptionResponse",
+                "headers": "200 OK, Host, Content-Length, Content-Type: application/xml",
+                "isFault": false,
+                "direction": "OUT",
+                "description": "Response message to successful subscription.",
+                "body": "An instance of urn:x-eurocae-example:service:aman:mes/SubscriptionResponse"
+              },
+              {
+                "name": "Unauthorized",
+                "headers": "401 Unauthorized, Host, WWW-Authenticate",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of non-authorized request."
+              },
+              {
+                "name": "NotFound",
+                "headers": "404 Not Found, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of wrong URL"
+              },
+              {
+                "name": "Conflict",
+                "headers": "409 Conflict, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of an already subscribed consumer."
+              },
+              {
+                "name": "InternalServerError",
+                "headers": "500 Internal Server Error, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case an unexpected error occurred while processing the request."
+              },
+              {
+                "name": "ServiceUnavailable",
+                "headers": "503 Service Unavailable, Host",
+                "direction": "OUT",
+                "isFault": true,
+                "description": "Response returned in case the service is not available."
+              }
+            ],
+            "synchronicity": "SYNCHRONOUS",
+            "tiProtocolMethod": [
+              "GET"
+            ]
+          },
+          {
+            "description": "Remove a subscription from the portfolio.",
+            "idempotency": "IDEMPOTENT",
+            "name": "unsubscribeToArrivalSequenceInformation",
+            "precondition": "The subscription must have been created before.",
+            "operationMessage": [
+              {
+                "name": "UnsubscriptionRequest",
+                "headers": "Authorization, for instance X-WSSE (for non-webserver authorization)",
+                "isFault": false,
+                "direction": "IN",
+                "description": "Request message to create a subscription."
+              },
+              {
+                "name": "UnsubscriptionResponse",
+                "headers": "200 OK, Host, Content-Length, Content-Type: application/xml",
+                "isFault": false,
+                "direction": "OUT",
+                "description": "Response message to successful subscription."
+              },
+              {
+                "name": "BadRequest",
+                "headers": "400 Bad Request, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of malformed request data."
+              },
+              {
+                "name": "Unauthorized",
+                "headers": "401 Unauthorized, Host, WWW-Authenticate",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of non-authorized request."
+              },
+              {
+                "name": "NotFound",
+                "headers": "404 Not Found, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of wrong URL"
+              },
+              {
+                "name": "InternalServerError",
+                "headers": "500 Internal Server Error, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case an unexpected error occurred while processing the request."
+              },
+              {
+                "name": "ServiceUnavailable",
+                "headers": "503 Service Unavailable, Host",
+                "direction": "OUT",
+                "isFault": true,
+                "description": "Response returned in case the service is not available."
+              }
+            ],
+            "synchronicity": "SYNCHRONOUS",
+            "tiProtocolMethod": [
+              "DELETE"
+            ]
+          },
+          {
+            "description": "Report a problem.",
+            "idempotency": "NON_IDEMPOTENT",
+            "name": "communicateProblem",
+            "operationMessage": [
+              {
+                "name": "DataValidationResult",
+                "headers": "Content-Type: application/xml",
+                "isFault": false,
+                "direction": "IN",
+                "description": "Response message to successful subscription.",
+                "body": "Instance of urn:x-eurocae-example:service:aman:mes/DataValidationResult"
+              },
+              {
+                "name": "Accepted",
+                "headers": "202 Accepted, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case the problem is successfully reported."
+              },
+              {
+                "name": "BadRequest",
+                "headers": "400 Bad Request, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of malformed request data."
+              },
+              {
+                "name": "Unauthorized",
+                "headers": "401 Unauthorized, Host, WWW-Authenticate",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case of non-authorized request."
+              },
+              {
+                "name": "InternalServerError",
+                "headers": "500 Internal Server Error, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response in case an unexpected error occurred while processing the request."
+              },
+              {
+                "name": "ServiceUnavailable",
+                "headers": "503 Service Unavailable, Host",
+                "isFault": true,
+                "direction": "OUT",
+                "description": "Response returned in case the service is not available."
+              }
+            ],
+            "synchronicity": "SYNCHRONOUS",
+            "tiProtocolMethod": [
+              "POST"
+            ]
+          }
+        ],
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE"
+      },
+      {
+        "name": "ArrivalSequenceInformationPublisherSOAP",
+        "description": "WS SOAP Subscription Interface. This interface is one of the two implementation alternatives of the ArrivalSequenceInformationPublisher interface.",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_WS_SOAP",
+        "tiPrimitiveMessageExchangePattern": "SYNCHRONOUS_REQUEST_RESPONSE",
+        "interfaceBindingDescription": "Mutual Server-Client authentication will be performed via TLS using X.509 certificates.",
+        "behaviour": [
+          {
+            "name": "Arrival Sequence Publisher Behaviour",
+            "description": "Section 3.6.4.1 of the Arrival Sequence Service Performance Standard document."
+          }
+        ],
+        "operation": [
+          {
+            "description": "Create a new subscription resource",
+            "idempotency": "IDEMPOTENT",
+            "name": "subscribeToArrivalSequenceInformation",
+            "operationMessage": [
+              {
+                "name": "subscribeToArrivalSequenceInformationRequest",
+                "headers": "Authorization, for instance X-WSSE (for non-webserver authorization)",
+                "isFault": false,
+                "direction": "IN",
+                "description": "Request message to create a subscription.",
+                "body": "An instance of urn:x-eurocae-example:service:aman:mes/SubscriptionRequestType message"
+              },
+              {
+                "name": "subscribeToArrivalSequenceInformationResponse",
+                "headers": "200 OK, Host, Content-Length, Content-Type: application/xml",
+                "isFault": false,
+                "direction": "OUT",
+                "description": "Response message to subscription.",
+                "body": "An instance of urn:x-eurocae-example:service:aman:mes/SubscriptionReponseType message"
+              }
+            ],
+            "synchronicity": "SYNCHRONOUS",
+            "tiProtocolMethod": [
+              "POST"
+            ]
+          },
+          {
+            "description": "Remove a subscription from the portfolio.",
+            "idempotency": "IDEMPOTENT",
+            "name": "unsubscribeToArrivalSequenceInformation",
+            "precondition": "The subscription must have been created before.",
+            "operationMessage": [
+              {
+                "name": "unsubscribeToArrivalSequenceInformationRequest",
+                "headers": "Authorization, for instance X-WSSE (for non-webserver authorization)",
+                "isFault": false,
+                "direction": "IN",
+                "description": "Request message to unsubscribe.",
+                "body": "An instance of urn:x-eurocae-example:service:aman:mes/UnsubscriptionRequestType message"
+              },
+              {
+                "name": "unsubscribeToArrivalSequenceInformationResponse",
+                "headers": "200 OK, Host, Content-Length, Content-Type: application/xml",
+                "isFault": false,
+                "direction": "OUT",
+                "description": "Response message to unsubscription.",
+                "body": "A SOAP enveloped instance of urn:x-eurocae-example:service:aman:mes/UnsubscriptionReponseType message"
+              }
+            ],
+            "synchronicity": "SYNCHRONOUS",
+            "tiProtocolMethod": [
+              "POST"
+            ]
+          },
+          {
+            "description": "Report a problem.",
+            "idempotency": "NON_IDEMPOTENT",
+            "name": "communicateProblem",
+            "operationMessage": [
+              {
+                "name": "communicateProblemRequest",
+                "headers": "Authorization, for instance X-WSSE (for non-webserver authorization)",
+                "isFault": false,
+                "direction": "IN",
+                "description": "Request message to communicate a problem.",
+                "body": "A SOAP enveloped instance of urn:x-eurocae-example:service:aman:mes/DataValidationResultType message."
+              }
+            ],
+            "synchronicity": "SYNCHRONOUS",
+            "tiProtocolMethod": [
+              "POST"
+            ]
+          }
+        ],
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE"
+      },
+      {
+        "name": "ArrivalSequenceInformationSubscriber",
+        "description": "Publication Interface",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "tiPrimitiveMessageExchangePattern": "FIRE_AND_FORGET",
+        "interfaceBindingDescription": "- Mutual Server-Client authentication will be performed via TLS using X.509 certificates.",
+        "behaviour": [
+          {
+            "name": "Arrival Sequence Publisher Behaviour",
+            "description": "Section 3.6.4.2 of the Arrival Sequence Service Performance Standard document."
+          }
+        ],
+        "operation": [
+          {
+            "name": "publishArrivalSequence",
+            "description": "Operation that allows the provider to publish an Arrival Sequence message to a subscribed consumer.",
+            "idempotency": "NON_IDEMPOTENT",
+            "precondition": "The consumer needs to be subscribed and connected to the queue.",
+            "synchronicity": "ASYNCHRONOUS",
+            "tiProtocolMethod": [
+              "transfer"
+            ],
+            "operationMessage": [
+              {
+                "direction": "OUT",
+                "headers": "Content-type: application/xml",
+                "isFault": false,
+                "name": "arrivalSequence",
+                "description": "Arrival Sequence publication message.",
+                "body": "Instance of urn:x-eurocae-example:service:aman:pub/arrivalSequence"
+              }
+            ]
+          },
+          {
+            "name": "communicateException",
+            "description": "Operation that allows the provider to publish an Arrival Sequence message to a subscribed consumer.",
+            "idempotency": "NON_IDEMPOTENT",
+            "precondition": "The consumer needs to be subscribed and connected to the queue.",
+            "synchronicity": "ASYNCHRONOUS",
+            "tiProtocolMethod": [
+              "transfer"
+            ],
+            "operationMessage": [
+              {
+                "direction": "OUT",
+                "headers": "Content-type: application/xml",
+                "isFault": true,
+                "name": "providerException",
+                "description": "Provider exception publication message.",
+                "body": "Instance of urn:x-eurocae-example:service:aman:pub/providerException"
+              }
+            ]
+          }
+        ],
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceProvisionSide": "CONSUMER_SIDE_INTERFACE"
+      }
+    ],
+    "serviceGeneralDescription": {
+      "concepts": [
+        {
+          "name": "summary",
+          "description": "In order to optimize inbound traffic flows at major hubs, arrival flights will be managed well before the top of descent. The consequence is that metering and sequencing activities need to be shared between several ATS units and will start in the En-Route phase when flights are cruising. This will allow absorbing tactical delay in line at a much higher altitude than the current holding or radar vectoring within the TMAs, and thus saving fuel and reducing CO2 emissions for Airspace Users. When an Arrival Manager (AMAN) is available at an airport, its horizon is at present usually limited to the geographical scope of the terminal control centre. It is implicating that the view is not always time symmetrical from the runway and somehow blind at what’s happening further out. These shortfalls will be overcome by:\n- Expanding the planning horizon of AMAN systems up to 200NM in order to include the economical Top of Descent (ToD).\n- Providing Upstream ATS units with Arrival Management Information and so allowing cross border (be it system border, ATS unit border, ANSP border, State or Regional organization border) activities. The provision of Arrival Information from Downstream ATSU to Upstream ATSU is communicated via SWIM for the pre-sequencing of the arrival stream. The Arrival Information Management Service is derived from SESAR Solution pack -Extended Arrival Management (AMAN) Horizon [1]. Two main recipients for Arrival Sequence information are addressed:\n- A stakeholder ATSU controlling a flight to the TMA in view of the AMAN implementation;\n- A satellite airport which is a “nearby” airport having a departing flight to the concerned destination airport."
+        }
+      ],
+      "operationalNeed": [
+        {
+          "name": "Cooperation between ATSUs and airports to improve the efficiency of arrival sequence.",
+          "description": "Provide connection with cooperative En-Route Air Traffic Service Units (ATSU) to coordinate the actions to be taken by the cooperative ATSUs to make the correct time adjustment to flights under their control, in order to get the best and most efficient arriving flight sequence at the relevant airports based on AMAN arriving planning tool"
+        },
+        {
+          "name": "Arrival Management Information_US",
+          "description": "SESAR Identifier: IER-5.6.4-IERS-0032-0010 \nIssuer: Arrival Management \nIntended Addressess: Stakeholder ATSU \nInformation Element: Arrival Management Information (IE-5.6.4-0032-0032)"
+        }
+      ],
+      "qualityOfService": [
+        {
+          "name": "MAX_DELIVERY_TIME",
+          "description": "The 'MAX_DELIVERY_TIME' is the maximum allowed difference between the time of reception of a message at the consuming interface and the time of publication from the providing interface. As this includes the time absorbed on the network layer, the provider has to offer an appropriate network performance and has to define a minimum network performance on the consuming side as a precondition. The MAX_DELIVERY_TIME shall be equal or lower than 10 seconds. "
+        },
+        {
+          "name": "MIN_AVAILABILITY",
+          "description": "The Arrivial SequenceProvider shall provide a value for MIN_AVAILABILITY parameter defined as the ratio between total time that the service is available and a given interval of time (e.g. 1 month, 1 year)."
+        },
+        {
+          "name": "SERVICE_RESTART_TIME",
+          "description": "Upon service restart the Arrival Sequence provider shall ensure that the service functionality is available within 'SERVICE_RESTART_TIME'. The ArrivialSequenceProvider shall provide a value for the SERVICE_RESTART_TIME parameter."
+        },
+        {
+          "name": "SUBSCRIPTION_TIME_TO_LIVE",
+          "description": "Upon ArrivalSequenceConsumer unavailability the ArrivalSequenceProvider shall keep the subscription active within 'SUBSCRIPTION_TIME_TO_LIVE'. The ArrivialSequenceProvider shall provide a value for the \"SUBSCRIPTION_TIME_TO_LIVE\" parameter. This parameter is defined as the time within which the ArrivalSequenceProvider shall retain the subscription even if the ArrivalSequenceConsumer get disconnected."
+        },
+        {
+          "name": "MESSAGE_TTL",
+          "description": "For each ArrivalSequenceConsumer, the ArrivalSequenceProvider shall retain a not yet consumed (or delivered) ArrivalSequence message for at least MESSAGE_TTL period of time. MESSAGE_TTL indicates the message 'time to leave', i.e. the amount of time a message yet to be consumed is retained by the provider if such message has not been consumed yet by the service consumer. The ArrivalSequenceProvider shall provide a value for the MESSAGE_TTL parameter. The MESSAGE_TTL represents the time a given ArrivalSequence message must be kept by the ArrivalSequenceProvider if not consumed or delivered to the ArrivalSequenceConsumer before discarding."
+        },
+        {
+          "name": "MAX_CONSUMER_NUMBER",
+          "description": "The service provider shall define the MAX_CONSUMER_NUMBER parameter, which represents the maximum supported concurrent consumers of the service."
+        },
+        {
+          "name": "Common UTC time source",
+          "description": "The systems providing or consuming the service shall be synchronised to a common UTC time-source."
+        }
+      ],
+      "functionality": [
+        {
+          "name": "Upstream Arrival Sequence information",
+          "description": "A satellite airport which is a “nearby” airport having a departing flight to the concerned destination airport is informed of the arrival sequence of the destination airport.",
+          "realWorldEffect": "Upstream ATSUs are informed of the sequencing of the arrival stream."
+        }
+      ],
+      "validation": [
+        {
+          "description": "Service providers claiming to have developed service instances which comply with the Arrival Sequence Service Performance Standard need to demonstrate this towards the consumers of the service instance. This can be achieved by verifying that the service formally fulfils the requirements of this standard and/or by validating or testing activities, which prove whether the expected behaviour and outcome of the service is achieved.",
+          "type": "SELF_VALIDATION"
+        }
+      ]
+    },
+    "serviceInformationDescription": {
+      "exchangeSchema": [
+        {
+          "schemaLanguage": "http://www.w3.org/2001/XMLSchema",
+          "reference": "Arrival Sequence Service Performance Standard, appendix A.3.1",
+          "name": "urn:x-eurocae-example:service:aman:mes"
+        },
+        {
+          "schemaLanguage": "http://www.w3.org/2001/XMLSchema",
+          "reference": "Arrival Sequence Service Performance Standard, appendix A.4.1",
+          "name": "urn:x-eurocae-example:service:aman:pub"
+        }
+      ],
+      "informationDefinition": [
+        {
+          "name": "",
+          "airmConformant": true,
+          "airmVersion": "4.1.0",
+          "description": "This data catalogue is conformant to the EUROCONTROL Specification for SWIM Information Definition and represents what is called an 'information definition' in the EUROCONTROL specification on SWIM Information. Appendix C of the Arrival Sequence Service Performance Standard explains how this data catalogue conforms to the EUROCONTROL Specification for SWIM Information Definition, explaining in particular the system of keywords used to represent the AIRM mapping."
+        }
+      ]
+    }
+  }
+}

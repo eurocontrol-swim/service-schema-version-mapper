@@ -1,0 +1,216 @@
+[
+  {
+    "from": {
+      "path": "$.informationService.name",
+      "type": "string"
+    },
+    "to": {
+      "path": "$.informationService.serviceIdentification.name",
+      "type": "string"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.version",
+      "type": "string"
+    },
+    "to": {
+      "path": "$.informationService.serviceIdentification.version",
+      "type": "string"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceAbstract",
+      "type": "string"
+    },
+    "to": {
+      "path": "$.informationService.serviceAbstract",
+      "type": "string"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceCategorisation",
+      "type": "object"
+    },
+    "to": {
+      "path": "$.informationService.serviceCategorisation",
+      "type": "object"
+    },
+    "transformation": "service_categorisation_transformation"
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceCategorisation.lifeCycleStage",
+      "type": "string"
+    },
+    "to": {
+      "path": "$.informationService.serviceCategorisation.lifeCycleStage",
+      "type": "string"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.descriptionInformation.abbreviations",
+      "type": "array"
+    },
+    "to": {
+      "path": "$.informationService.descriptionInformation.abbreviations",
+      "type": "array"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.descriptionInformation.serviceDescriptionIdentification.serviceDescriptionTitle",
+      "type": "string"
+    },
+    "to": {
+      "path": "$.informationService.descriptionInformation.descriptionIdentification.title",
+      "type": "string"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.descriptionInformation.serviceDescriptionIdentification.serviceDescriptionReferenceDate",
+      "type": "string"
+    },
+    "to": {
+      "path": "$.informationService.descriptionInformation.descriptionIdentification.referenceDate",
+      "type": "string"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.descriptionInformation.serviceDescriptionIdentification.serviceDescriptionEdition",
+      "type": "string"
+    },
+    "to": {
+      "path": "$.informationService.descriptionInformation.descriptionIdentification.edition",
+      "type": "string"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceDescriptionReferences.implementedStandard",
+      "type": "array"
+    },
+    "to": {
+      "path": "$.informationService.references.implementedStandard",
+      "type": "array"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceDescriptionReferences.serviceDocument",
+      "type": "array"
+    },
+    "to": {
+      "path": "$.informationService.references.serviceDocument",
+      "type": "array"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceTechnicalDescription.serviceMonitoring",
+      "type": "object"
+    },
+    "to": {
+      "path": "$.informationService.technicalDescription.serviceMonitoring",
+      "type": "object"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceTechnicalDescription.serviceMonitoring",
+      "type": "object"
+    },
+    "to": {
+      "path": "$.informationService.technicalDescription.serviceMonitoring",
+      "type": "object"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceTechnicalDescription.technicalConstraint",
+      "type": "object"
+    },
+    "to": {
+      "path": "$.informationService.technicalDescription.technicalConstraint",
+      "type": "object"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceInterface[0].behaviour",
+      "type": "array"
+    },
+    "to": {
+      "path": "$.informationService.technicalDescription.behaviour",
+      "type": "array"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceGeneralDescription",
+      "type": "object"
+    },
+    "to": {
+      "path": "$.informationService.generalDescription",
+      "type": "object"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceProvision.dateInOperation",
+      "type": "string"
+    },
+    "to": {
+      "path": "$.informationService.generalDescription.dateInOperation",
+      "type": "string"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceProvision",
+      "type": "object"
+    },
+    "to": {
+      "path": "$.informationService.serviceProvider",
+      "type": "object"
+    },
+    "transformation": "service_provision_transformation"
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceInformationDescription",
+      "type": "object"
+    },
+    "to": {
+      "path": "$.informationService.informationDescription",
+      "type": "object"
+    }
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceInterface",
+      "type": "array"
+    },
+    "to": {
+      "path": "$.informationService.serviceInterface",
+      "type": "array"
+    },
+    "transformation": "interface_transformation"
+  },
+  {
+    "from": {
+      "path": "$.informationService.serviceProvision.pointOfContact",
+      "type": "array"
+    },
+    "to": {
+      "path": "$.informationService.serviceProvider.pointOfContact",
+      "type": "array"
+    },
+    "transformation": "point_of_contact_transformation"
+  }
+]

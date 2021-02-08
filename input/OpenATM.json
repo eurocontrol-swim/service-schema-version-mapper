@@ -1,0 +1,1615 @@
+{
+  "informationService": {
+    "descriptionInformation": {
+      "serviceDescriptionIdentification": {
+        "serviceDescriptionTitle": "OpenATM",
+        "serviceDescriptionEdition": "1.0",
+        "serviceDescriptionReferenceDate": "03/07/2020"
+      },
+      "abbreviations": [
+        {
+          "name": "AMQ",
+          "description": "ActiveMQ"
+        },
+        {
+          "name": "ANSP",
+          "description": "Air Navigation Service Provider"
+        },
+        {
+          "name": "ATSU",
+          "description": "Air Traffic Service Unit"
+        },
+        {
+          "name": "AoI",
+          "description": "Area of Interest"
+        },
+        {
+          "name": "AoR",
+          "description": "Area of Responsibility"
+        },
+        {
+          "name": "ASPL",
+          "description": "Abbreviated System Plan"
+        },
+        {
+          "name": "ATS",
+          "description": "Air Traffic Services"
+        },
+        {
+          "name": "BER",
+          "description": "Basic Encoding Rules"
+        },
+        {
+          "name": "BS",
+          "description": "Basic Sector"
+        },
+        {
+          "name": "CC",
+          "description": "Control Condition"
+        },
+        {
+          "name": "CFL",
+          "description": "Cleared Flight Level"
+        },
+        {
+          "name": "COP",
+          "description": "Coordination Point"
+        },
+        {
+          "name": "CWP",
+          "description": "Controller Working Position"
+        },
+        {
+          "name": "DCT",
+          "description": "Direct"
+        },
+        {
+          "name": "ECL",
+          "description": "En-route Cruising Level"
+        },
+        {
+          "name": "EET",
+          "description": "Estimated Elapsed Times"
+        },
+        {
+          "name": "ETO",
+          "description": "Estimated Time-Over"
+        },
+        {
+          "name": "FDPS",
+          "description": "Flight Data Processing System"
+        },
+        {
+          "name": "FPM",
+          "description": "Flight Plan Monitoring"
+        },
+        {
+          "name": "FS",
+          "description": "Flight Sector"
+        },
+        {
+          "name": "GUFI",
+          "description": "Globally Unique Flight Identifier"
+        },
+        {
+          "name": "HDG",
+          "description": "Heading"
+        },
+        {
+          "name": "JMS",
+          "description": "Java Messaging System"
+        },
+        {
+          "name": "ICD",
+          "description": "Interface Control Document"
+        },
+        {
+          "name": "LoA",
+          "description": "Letter of Agreement"
+        },
+        {
+          "name": "MFX",
+          "description": "Metering Fix"
+        },
+        {
+          "name": "MSB-CB",
+          "description": "Maastricht Service Bus \u2013 Connector Box"
+        },
+        {
+          "name": "MTCD",
+          "description": "Medium-Term Conflict Detection"
+        },
+        {
+          "name": "MUAC",
+          "description": "Maastricht Upper Area Control Centre"
+        },
+        {
+          "name": "NFL",
+          "description": "Entry Flight Level"
+        },
+        {
+          "name": "NSFL",
+          "description": "Supplementary Entry Flight Level"
+        },
+        {
+          "name": "OPS",
+          "description": "Operational Sector"
+        },
+        {
+          "name": "PER",
+          "description": "Packed Encoding Rules"
+        },
+        {
+          "name": "PFL",
+          "description": "Planned Flight Level"
+        },
+        {
+          "name": "RFL",
+          "description": "Requested Flight Level"
+        },
+        {
+          "name": "RMP",
+          "description": "Reliable Multicast Protocol"
+        },
+        {
+          "name": "ROCD",
+          "description": "Rate of Climb\/Descend"
+        },
+        {
+          "name": "SAC",
+          "description": "System Area Code"
+        },
+        {
+          "name": "SAS",
+          "description": "Shared ATS System"
+        },
+        {
+          "name": "SCL",
+          "description": "Slovenia Control"
+        },
+        {
+          "name": "SIC",
+          "description": "System Identification Code"
+        },
+        {
+          "name": "SFPL",
+          "description": "System Flight Plan"
+        },
+        {
+          "name": "SOA",
+          "description": "Service-Oriented Architecture"
+        },
+        {
+          "name": "STCA",
+          "description": "Short-Term Conflict Alert"
+        },
+        {
+          "name": "SWIM",
+          "description": "System Wide Information Management"
+        },
+        {
+          "name": "TFL",
+          "description": "Transfer Flight Level"
+        },
+        {
+          "name": "TSFL",
+          "description": "Supplementary Transfer Flight Level"
+        },
+        {
+          "name": "VRC",
+          "description": "Vertical Rate of Climb"
+        },
+        {
+          "name": "XER",
+          "description": "XML Encoding Rules"
+        },
+        {
+          "name": "XML",
+          "description": "Extensible Markup Language"
+        }
+      ]
+    },
+    "name": "OpenATM",
+    "version": "1.0",
+    "serviceAbstract": "<p>The OpenATM service decouples the ATM data service provider (ADSPs) from the air traffic service units (ATSUs) through an open and standardised service interfaces to foster ADSP\/ATSU cross-vendor interoperability. Its aim is to provide ATSUs with an interface that allows its own CWP working positions (or other systems that require ATM data as a service) to connect with a remotely located FDPS. The OpenATM service includes correlation, flight data distribution, flight data management, etc.<\/p>",
+    "serviceCategorisation": {
+      "serviceType": "DEFINITION",
+      "lifeCycleStage": "PROSPECTIVE",
+      "businessActivityType": [
+        "SERVICE_DELIVERY_MANAGEMENT"
+      ],
+      "informationCategory": [
+        "FLIGHT_INFORMATION_EXCHANGE"
+      ],
+      "intendedConsumer": [
+        "AIR_TRAFFIC_SERVICE_PROVIDER"
+      ],
+      "applicationMessageExchangePattern": [
+        "PUBLISH_SUBSCRIBE_WITH_PUSH_MECHANISM",
+        "SYNCHRONOUS_REQUEST_REPLY"
+      ],
+      "geospatialCategorisation": {
+        "aerodromeICAOLocationIndicator": [
+          ""
+        ],
+        "stateICAONationalityLetters": [
+          ""
+        ],
+        "firICAOLocationIndicator": [
+          ""
+        ]
+      }
+    },
+    "serviceProvision": {
+      "dateInOperation": "",
+      "provider": "EUROCONTROL_&_SLOVENIA_CONTROL",
+      "providerDescription": "<p>This is a partnership between Slovenia Control and EUROCONTROL<\/p>",
+      "providerType": [
+        "CIVIL_AIR_NAVIGATION_SERVICE_PROVIDER"
+      ],
+      "serviceSupport": "",
+      "pointOfContact": [
+        {
+          "name": "Primary PoC - Kristof Schippers",
+          "description": "For any additional information on this service definition, please contact ATM Data as a Service (ADaaS) in EUROCONTROL MUAC",
+          "email": "kristof.schippers@eurocontrol.int",
+          "phoneNumber": ""
+        },
+        {
+          "name": "Secondary PoC - Marko Hrastovec",
+          "description": "For any additional information on this service definition, please contact ATM Data as a Service (ADaaS) in Slovenia Control",
+          "email": "marko.hrastovec@sloveniacontrol.si",
+          "phoneNumber": ""
+        }
+      ]
+    },
+    "serviceGeneralDescription": {
+      "operationalNeed": [
+        {
+          "name": "Service Definition",
+          "description": "In order to facilitate an accelerated development and deployment of the ADaaS concept, MUAC offers the OpenATM service definition describing an open service interface that can be implemented in various multi-vendor scenarios. The current operational MUAC FDPS-CWP interface has been used as a starting point; based on good engineering practices its implementation already accommodates an interface between a data centre and an OPS room using different technologies and manufactured by different suppliers. Additionally, its interface design rationale has not changed since its inception, but has proven in practice that a continuous and flexible extension of its payload contents is possible; thereby not only demonstrating the feasibility to define services, but also demonstrate its maturity and the many aspects needed for commissioning of such services (e.g. performance, safety, security, etc.)."
+        },
+        {
+          "name": "Information Exchange Requirements",
+          "description": "The service is defined to satisfy the vital D-NOTAM proposal exchange between airports and the local NOTAM office that is then responsible for the international NOTAM distribution. IER ref??"
+        },
+        {
+          "name": "Service identification and modelling",
+          "description": "Eurocontrol (MUAC) and potentially Slovenia Control in the future"
+        }
+      ],
+      "functionality": [
+        {
+          "name": "Subscription Management",
+          "description": "allows service consumers to subscribe or unsubscribe to the distribution of a series of information areas.The following information areas can be subscribed to: \u2022 flightplan-data, \u2022 sector-specific-data, \u2022 safety-net, \u2022 flightplan-monitoring, \u2022 datalink, \u2022 correlation, \u2022 heartbeat, \u2022 flight-bright, \u2022 mtcd-service, \u2022 system-information, \u2022 strategic-constraint, \u2022 sectorisation-data, \u2022 ssr-code, \u2022 meteo-data, \u2022 runway-info, \u2022 special-area, \u2022 map-data",
+          "realWorldEffect": "Not applicable"
+        },
+        {
+          "name": "Data Distribution",
+          "description": "ensures that each service consumer is provided with the latest up-to-date information relative to the subscribed information areas.",
+          "realWorldEffect": "Not applicable"
+        },
+        {
+          "name": "Heartbeat Distribution",
+          "description": "supports the service provider and the service consumer to monitor each other\u2019s status.",
+          "realWorldEffect": "Not applicable"
+        },
+        {
+          "name": "Management of Flight Plan Data",
+          "description": "allows service consumers to provide the correct & latest up-to-date controller information, create, modifiy, udate ASPL or SFPL, Submit requests about instructions\/clearances given to the flight crew (e.g. DCT, CFL, NFL, speed, heading, \u2026), Change status information regarding the flight\u2019s airframe (e.g. no FSSA, RVSM status, \u2026), Etc.",
+          "realWorldEffect": "Any instruction communicated to the pilot (either via voice or datalink) are expected to be executed by the aircrew. Furthermore, such information is communicated towards downstream partners and the network manager."
+        },
+        {
+          "name": "Management of Sector Specific Data",
+          "description": "allows service consumers to provide the correct & latest up-to-date controller information regarding sector-specific information and coordination & transfer information, such as taking control of a flight (or proposing hand-over, request-on-frequency, etc.), Change the coordinated entry and exit levels, Deliver departure clearance for an flight departing from an internal aerodrome, Skip and cancel-skip of an internal sector, Bypass and cancel-bypass of the 1st downstream internal sector, Delegate the flight to another internal sector, Change the next downstream internal sector into the preferred one, Change the entry\/exit frequency of sectors, Etc.",
+          "realWorldEffect": "Upon communication of the SSR code to the aircrew, the aircraft transponder will emit that code. Furthermore, the present\/next SSR codes allocated to the flight plan are communicated to downstream partners interested in the flight."
+        },
+        {
+          "name": "Management of Correlation",
+          "description": "allows service consumers to provide inputs related to the linkage of flight plans with tracks, such as link a flight plan with and unlink a flight plan from a specific track, set the present, next or downstream SSR code a flight.",
+          "realWorldEffect": "Correlation establishment, and the resulting identification of the current aircraft position related to the flight plan are communicated towards the network manager."
+        },
+        {
+          "name": "Management of Flight Bright",
+          "description": "allows service consumers to provide inputs related to highlight of a track or flight plan, such as adding or removing SSR codes or Mode S callsigns to \/ from the Bright function for his OPS sector; adding or removing a Flight to \/ from the Bright function for his OPS sector;or another internal OPS Sector; point a flight to an external flight sector \/ centre",
+          "realWorldEffect": "The management of flight bright does not have a real-world effect."
+        },
+        {
+          "name": "Management of Sectorisation",
+          "description": "allows service consumers to perform a re-sectorisation change, such as verifying a new sectorisation change (would it be valid if performed), performing a sectorisation change.",
+          "realWorldEffect": "Re-sectorisation changes in the configuration of the air traffic control unit result in the real-world effect that air traffic is handled in a more efficient way (in accordance with the flow of traffic)."
+        },
+        {
+          "name": "Management of SSR code",
+          "description": "allows service consumers to reserve an SSR code for manual assignment later on (i.e. manual assignment by using the Operation setSsr, see section 3.7.4), and to clear such code from display in the whole OPS sector.An SSR code reserved for manual assignment is not available for automatic assignment. The SSR code will be re-served during a design parameter time and then released if not manually assigned to any flight plan or released according to the standard release rules if manually assigned to a flight plan during this design parameter time.",
+          "realWorldEffect": "The management of SSR code does not have a direct real-world effect. Its effect is reflected via the aforementioned management of correlation when the SSR code is communicated to the aircrew."
+        }
+      ],
+      "accessAndUseCondition": [
+        {
+          "name": "Access and Use Conditions have to be agr",
+          "description": "<p>Usage&nbsp;and&nbsp;access&nbsp;conditions&nbsp;have&nbsp;to&nbsp;be&nbsp;agreed&nbsp;between&nbsp;the&nbsp;service&nbsp;provider&nbsp;and&nbsp;the&nbsp;service&nbsp;consumer.&nbsp;\\r\\nExample&nbsp;of&nbsp;restrictions&nbsp;in&nbsp;usage&nbsp;&nbsp;and&nbsp;access&nbsp;of&nbsp;the&nbsp;OpenATM&nbsp;service:&nbsp;Identified&nbsp;users&nbsp;are&nbsp;granted&nbsp;permission&nbsp;to&nbsp;access&nbsp;and&nbsp;use&nbsp;the&nbsp;OpenATM&nbsp;service&nbsp;according&nbsp;the&nbsp;Terms&nbsp;of&nbsp;Use,&nbsp;provided&nbsp;that:\\r\\n&nbsp;\u2022&nbsp;they&nbsp;agree&nbsp;not&nbsp;to&nbsp;distribute&nbsp;any&nbsp;part&nbsp;of&nbsp;the&nbsp;delivered&nbsp;data&nbsp;received&nbsp;from&nbsp;the&nbsp;OpenATM&nbsp;service,&nbsp;without&nbsp;prior&nbsp;written&nbsp;authorization&nbsp;from&nbsp;the&nbsp;service&nbsp;provider.\\r\\n&nbsp;\u2022&nbsp;they&nbsp;agree&nbsp;not&nbsp;to&nbsp;use&nbsp;the&nbsp;OpenATM&nbsp;service&nbsp;for&nbsp;any&nbsp;commercial&nbsp;use&nbsp;unrelated&nbsp;to&nbsp;ther&nbsp;service&nbsp;provider\u2019s&nbsp;business&nbsp;interests&nbsp;without&nbsp;the&nbsp;prior&nbsp;written&nbsp;authorization&nbsp;of&nbsp;the&nbsp;service&nbsp;provider.&nbsp;o&nbsp;Prohibited&nbsp;commercial&nbsp;uses&nbsp;includes&nbsp;any&nbsp;of&nbsp;the&nbsp;following&nbsp;actions&nbsp;taken&nbsp;without&nbsp;the&nbsp;service&nbsp;provider\u2019s&nbsp;express&nbsp;approval:&nbsp;o&nbsp;sale&nbsp;of&nbsp;access&nbsp;to&nbsp;the&nbsp;OpenATM&nbsp;service;&nbsp;o&nbsp;sale&nbsp;of&nbsp;the&nbsp;data&nbsp;delivered&nbsp;via&nbsp;the&nbsp;OpenATM&nbsp;service.\\r\\n&nbsp;\u2022&nbsp;Prohibited&nbsp;commercial&nbsp;uses&nbsp;do&nbsp;not&nbsp;include&nbsp;any&nbsp;use&nbsp;that&nbsp;the&nbsp;service&nbsp;provider&nbsp;expressly&nbsp;authorizes&nbsp;in&nbsp;writing.<\/p>",
+          "type": "SERVICE_POLICY"
+        }
+      ],
+      "qualityOfService": [
+        {
+          "name": "Maximum time of Delivery",
+          "description": "Maximum time of delivery depends on the service interface type: \u2022 All functions receiving or producing traffic or flight related data. All functions producing system warnings or system errors. Less than 350ms.\u2022 Functions sending and\/or receiving management information and\/or maps including cartographical and aeronautical data. Less than 500ms.\u2022 Functions sending and\/or receiving statistical information and\/or predicted airspace visual representations. Less than 1000ms."
+        },
+        {
+          "name": "Reliable messaging",
+          "description": "Supported through configuration of Apache AMQ Broker."
+        },
+        {
+          "name": "Authentication",
+          "description": "XYZ certificate used for mutual authentication."
+        },
+        {
+          "name": "Authorisation",
+          "description": "Based on identities retrieved from XYZ certificates. Multiple clients per organization are authorized to consume the service at a given point in time. If a connection to the broker (rather than login request) is attempted by a client application while another one (from the same organization) is already established, the connection (or login request) will be refused."
+        },
+        {
+          "name": "Service Performance",
+          "description": "Service restart time is required to be less than 5 minutes."
+        },
+        {
+          "name": "Subscription persistency",
+          "description": "Organizations will be considered as subscribed to the service until:\u2022 a \u201clogout\u201d is performed,\u2022 a design parameter of number of heartbeats are missed from the consumer.Upon these events, the subscription will be terminated. The client is expected to re-subscribe at broker level upon broker subscription expiration."
+        },
+        {
+          "name": "Transport level integrity and confidentiality",
+          "description": "Transport level integrity and confidentiality is achieved via IPsec (AES256)."
+        },
+        {
+          "name": "Message persistency",
+          "description": "OpenATM service does not support message persistency. Consumers are ensured that latest available and up-to-date data is received."
+        }
+      ],
+      "validation": [
+        {
+          "type": "COLLABORATIVE_VALIDATION",
+          "description": "<p>The&nbsp;Maastricht&nbsp;Upper&nbsp;Area&nbsp;Control&nbsp;Centre&nbsp;(MUAC)&nbsp;established&nbsp;in&nbsp;2013&nbsp;the&nbsp;Shared&nbsp;ATS&nbsp;System&nbsp;(SAS),&nbsp;where&nbsp;a&nbsp;virtual&nbsp;centre&nbsp;network&nbsp;solution&nbsp;has&nbsp;been&nbsp;put&nbsp;into&nbsp;operational&nbsp;use,&nbsp;with&nbsp;one&nbsp;air&nbsp;navigation&nbsp;service&nbsp;provider&nbsp;offering&nbsp;shared&nbsp;ATM&nbsp;data&nbsp;services&nbsp;for&nbsp;the&nbsp;benefit&nbsp;of&nbsp;another&nbsp;ATSU&nbsp;in&nbsp;the&nbsp;core&nbsp;area&nbsp;of&nbsp;Europe.&nbsp;With&nbsp;the&nbsp;Shared&nbsp;ATS&nbsp;System&nbsp;the&nbsp;safety,&nbsp;efficiency&nbsp;and&nbsp;cost-effectiveness&nbsp;of&nbsp;a&nbsp;data&nbsp;service&nbsp;solution&nbsp;has&nbsp;been&nbsp;proven.\\r\\n\\r\\nThe&nbsp;ADaaS&nbsp;Demonstrator,&nbsp;designed&nbsp;and&nbsp;developed&nbsp;in&nbsp;cooperation&nbsp;between&nbsp;MUAC&nbsp;and&nbsp;Slovenia&nbsp;Control,&nbsp;is&nbsp;composed&nbsp;of&nbsp;3&nbsp;phases:&nbsp;\\r\\n\u2022&nbsp;Phase&nbsp;1:&nbsp;An&nbsp;ATM&nbsp;infrastructure&nbsp;is&nbsp;setup&nbsp;between&nbsp;MUAC&nbsp;and&nbsp;Slovenia&nbsp;Control&nbsp;where&nbsp;MUAC&nbsp;Controller&nbsp;Working&nbsp;Positions&nbsp;(CWP)&nbsp;installed&nbsp;in&nbsp;Slovenia&nbsp;Control&nbsp;are&nbsp;remotely&nbsp;connected&nbsp;to&nbsp;an&nbsp;FDPS&nbsp;instance&nbsp;in&nbsp;MUAC.&nbsp;The&nbsp;communication&nbsp;between&nbsp;the&nbsp;MUAC&nbsp;FDPS&nbsp;and&nbsp;CWPs&nbsp;is&nbsp;using&nbsp;the&nbsp;legacy&nbsp;interface.&nbsp;It&nbsp;is&nbsp;currently&nbsp;implemented&nbsp;and&nbsp;successful&nbsp;shadow&nbsp;operations&nbsp;have&nbsp;been&nbsp;conducted&nbsp;in&nbsp;June&nbsp;2016.&nbsp;\\r\\n\u2022&nbsp;Phase2:&nbsp;The&nbsp;interface&nbsp;between&nbsp;FDPS&nbsp;and&nbsp;CWP&nbsp;is&nbsp;changed&nbsp;to&nbsp;an&nbsp;open&nbsp;interface&nbsp;and&nbsp;the&nbsp;Slovenia&nbsp;Control&nbsp;CWP&nbsp;is&nbsp;connected&nbsp;to&nbsp;the&nbsp;MUAC&nbsp;FDPS&nbsp;via&nbsp;this&nbsp;interface.&nbsp;The&nbsp;OpenCWP&nbsp;interface&nbsp;decouples&nbsp;the&nbsp;ATM&nbsp;data&nbsp;service&nbsp;provider&nbsp;(ADSPs)&nbsp;from&nbsp;the&nbsp;air&nbsp;traffic&nbsp;service&nbsp;units&nbsp;(ATSUs)&nbsp;through&nbsp;an&nbsp;open&nbsp;and&nbsp;standardised&nbsp;service&nbsp;interfaces&nbsp;to&nbsp;foster&nbsp;ADSP\/ATSU&nbsp;cross-vendor&nbsp;interoperability.&nbsp;Services&nbsp;include&nbsp;correlation,&nbsp;flight&nbsp;data&nbsp;distribution,&nbsp;flight&nbsp;data&nbsp;management,&nbsp;etc.&nbsp;and&nbsp;has&nbsp;been&nbsp;successfully&nbsp;demonstrated&nbsp;in&nbsp;shadow&nbsp;operations&nbsp;in&nbsp;February&nbsp;2017.&nbsp;\\r\\n\u2022&nbsp;Phase&nbsp;3:&nbsp;The&nbsp;distributed&nbsp;architecture&nbsp;that&nbsp;allows&nbsp;remotely&nbsp;located&nbsp;data&nbsp;service&nbsp;providers&nbsp;to&nbsp;be&nbsp;completely&nbsp;synchronised&nbsp;is&nbsp;established.&nbsp;The&nbsp;identified&nbsp;solution(s)&nbsp;within&nbsp;the&nbsp;Target&nbsp;ADaaS&nbsp;Architecture&nbsp;have&nbsp;been&nbsp;experimentally&nbsp;established,&nbsp;in&nbsp;order&nbsp;to&nbsp;validate&nbsp;the&nbsp;assumptions&nbsp;and&nbsp;uncertainties&nbsp;of&nbsp;such&nbsp;architecture.&nbsp;Its&nbsp;feasibility&nbsp;has&nbsp;been&nbsp;demonstrated&nbsp;in&nbsp;shadow&nbsp;operations&nbsp;in&nbsp;November&nbsp;2017<\/p>"
+        }
+      ]
+    },
+    "serviceInformationDescription": {
+      "informationDefinition": [
+        {
+          "name": "Information Definition",
+          "description": "<p>The&nbsp;information&nbsp;definition&nbsp;is&nbsp;described&nbsp;in&nbsp;section&nbsp;4&nbsp;Exchanged&nbsp;Information&nbsp;of&nbsp;the&nbsp;specification&nbsp;document&nbsp;(see&nbsp;SERVICE_SPECIFICATION&nbsp;in&nbsp;service&nbsp;documents).&nbsp;The&nbsp;AIRM&nbsp;semantic&nbsp;correspondence&nbsp;is&nbsp;established&nbsp;in&nbsp;a&nbsp;separate&nbsp;document&nbsp;(see&nbsp;AIRM_TRACE&nbsp;in&nbsp;service&nbsp;documents).<\/p>",
+          "airmConformant": true
+        }
+      ],
+      "exchangeSchema": [
+        {
+          "name": "Schema",
+          "schemaLanguage": "ASN.1\/XML",
+          "reference": ""
+        }
+      ]
+    },
+    "serviceTechnicalDescription": {
+      "serviceMonitoring": {
+        "monitoringDescription": "See HeartbeatDistribution Interface."
+      },
+      "securityMechanism": [
+        {
+          "name": "Network security based on Virtual Private Network (VPN)",
+          "description": "Private VPN can be established with SLA agreement with network provider",
+          "type": [
+            "INTEGRITY",
+            "CONFIDENTIALITY"
+          ]
+        },
+        {
+          "name": "Network security based on IPSec tunnelling",
+          "description": "IPSec tunnelling can be established over the internet",
+          "type": [
+            "INTEGRITY",
+            "CONFIDENTIALITY"
+          ]
+        },
+        {
+          "name": "Application level authentication",
+          "description": "Authentication performed at application level",
+          "type": [
+            "AUTHENTICATION"
+          ]
+        }
+      ],
+      "technicalConstraint": [
+        {
+          "name": "running at the service consumer site",
+          "description": "The service instance is expected to be running at the service consumer site in a fully secure environment.Other possible constraints would be part of a service level agreement to be established and agreed between the service provider and the service consumer."
+        },
+        {
+          "name": "Time Synchronization based on NTP",
+          "description": "Service provider and consumer remain time-synchronized via NTP with their own time servers."
+        }
+      ]
+    },
+    "serviceInterface": [
+      {
+        "name": "SubscriptionManagement",
+        "description": "The following section provides further details on the general (un)subscription mechanism, as introduced in the section on \u201cInitialisation & distribution of messages\u201d. The mechanism guarantees that any connecting client receives the correct & latest up-to-date information for the service(s) it subscribes to. Additionally, it provides the means to unsubscribe to services. All services implemented on the MSB-CB are distributed over a dedicated Process Queue (i.e. 1 queue per connected client). On the queue, only those messages related to the requested services are distributed. This is done to allow connecting clients to choose whichever service they want, and limit the amount of data traversed over the network. The initialisation service is implemented by means of the following message:  \u2022 RequestLogin message (client requests subscription and initialisation to the MSB-CB for one or more services)  \u2022 RequestLogout message (client requests to unsubscribe from all services)",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "SYNCHRONOUS_REQUEST_RESPONSE",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceBindingDescription": "AMQP 1.0 content-type header used to specify media type values",
+        "operation": [
+          {
+            "name": "login",
+            "description": "The operation allows to:\u2022Request client subscription and initialisation for one or more services,\u2022Unsubscribe to one or more services.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestLogin message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "logout",
+            "description": "The operation allows requesting the un-subscription from all services.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestLogout message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "Service Behaviour",
+            "description": "<p>The&nbsp;service&nbsp;behaviour&nbsp;is&nbsp;described&nbsp;in&nbsp;text&nbsp;and&nbsp;diagrams&nbsp;in&nbsp;various&nbsp;sections&nbsp;of&nbsp;the&nbsp;specification&nbsp;document&nbsp;(see&nbsp;SERVICE_SPECIFICATION&nbsp;in&nbsp;service&nbsp;documents).<\/p>"
+          }
+        ]
+      },
+      {
+        "name": "DataDistribution",
+        "description": "TBD",
+        "interfaceProvisionSide": "CONSUMER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "FIRE_AND_FORGET",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceBindingDescription": "AMQP 1.0 content-type header used to specify media type values",
+        "operation": [
+          {
+            "name": "distributeFlightPlanData ",
+            "description": "The flight plan data distribution ensures that each client is provided with the latest up-to-date flight plan information detailing the fol-lowing information:\u2022General flight plan information\u2022Clearances\u20224D-Trajectory\u2022Airspace crossing & sector sequence information\u2022Entry & Exit coordination data for the current leg\u2022Current (under-control or first) and next sector conditions\u2022Basic correlation informationNote that the current implementation of the service only includes the coordination information related to the current leg . Downstream leg information may be provided at the same time by another service or by extending the definition of the current data type (see section Error! Reference source not found.), but this is considered out-of-scope of the ADaaS project. For the 4D-Trajectory, airspace crossing and sector sequence information, the complete flight within the considered system\u2019s AoI will be covered.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "FlightPlanDataMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "distributeSectorSpecificData",
+            "description": "The SectorSpecific data distribution ensures that each client is provided with the latest up-to-date OPS sector-specific information for a flight detailing the following information:\u2022Sector status (normal, skipped, bypassed, etc.)\u2022Entry, Internal & Exit coordination data for the OPS sector for which information is distributed. \u2022Intra-sector dialogue information\u2022Event trigger information (for display purposes) for the OPS sector tImportant: the service will emit all sector-specific data for all flights over the service. It is the clients responsibility to filter out the relevant messages for him. The rationale of using such an approach is that it allows the usage of topics (multicast) at a later stage in the project without changing the client side functionality.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "SectorSpecificDataMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "distributeFlightPlanMonitoring",
+            "description": "This service provides all subscribed clients with all detected deviations (Lateral, Vertical and Longitudinal) between the trajectories cleared data and the track. Additionally, it provides an automatic re-routing proposal when available.The service is implemented by means of the FpmMessage. Conformance monitoring information is only provided for SFPLs, which are under-control and not in MANUAL sub-state. Re-routing information may already be received for SFPLs, which have been coordi-nated at entry (e.g. ACT received at the server, or manual coordination performed) and are not yet-under-control of the local centre.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "FlightPlanMonitoringMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "distributeCorrelation ",
+            "description": "This service provides all subscribed clients with all detected deviations (Lateral, Vertical and Longitudinal) between the trajectories cleared data and the track. Additionally, it provides an automatic re-routing proposal when available.The service is implemented by means of the FpmMessage. Conformance monitoring information is only provided for SFPLs, which are under-control and not in MANUAL sub-state. Re-routing information may already be received for SFPLs, which have been coordi-nated at entry (e.g. ACT received at the server, or manual coordination performed) and are not yet-under-control of the local centre.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "CorrelationMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "distributeFlightBright",
+            "description": "The flight bright distribution service provides the means to highlight a flight within for the own OPS sector based on SSR Code(s) \u201cSSR Bright\u201d and\/or ModeS callsign(s) \u201cModeS bright\u201d, and within own or to other OPS sectors (internal\/external) based on callsign(s) \u201cflightplan bright\u201d.The service is implemented by means of the FlightBrightMessage. The message is distributed to the own OPS sector (case of bright for SSR code, ModeS code, or flightplan bright for the own OPS sector) or to another OPS sector (case of flightplan bright to another OPS sector); in other words message distribution is \u201cOPS sector oriented\u201d.At initialisation, actual bright information for the OPS sector is distributed. Per OPS sector there can be a maximum of 20 requests for flight bright.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "FlightBrightMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "distributeSectorisation",
+            "description": "The sectorisation distribution service ensures that each client is provided with the latest up-to-date sectorisation information residing at the server. Basically, the following information is distributed:\u2022Sectorisation pattern:  contains the sectorisation pattern (i.e. unique identifier for each sectorisation) selected for each sector group.\u2022Sector composition: composition contains the list of airspace volumes and basic sectors composing each flight sector (see section Error! Reference source not found. for more information on the concept).\u2022Sector consolidation: contains the list of flight sectors consolidated into each OPS sector (see section Error! Reference source not found. for more information on the concept).\u2022Sector allocation: contains the list of flight sectors allocated to each internal\/external centre.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "SectorisationMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "distributeSsrCode",
+            "description": "The service provides the OPS sector with the information related to reservation of a free manual-assignable SSR code sequence described in section Error! Reference source not found..The service is implemented by means of the SsrCodeMessage. The message is distributed to the own OPS sector only.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "SsrCodeMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "distributeWindForecast",
+            "description": "The meteorological information distribution service aims to provide all operational sectors with the latest:\u2022Wind & temperature forecast information extracted from the external world for a range of different levels,\u2022Airport related meteorological information received from the external world from the following sources:oMETAR and METAR CORoSPECI and SPECI COR\u2022QNH, transition level and transition altitude information for airportsThis service is implemented by means of two messages:\u2022WindForecastMessage, containing the wind & temperature forecast information.\u2022AirportMeteoMessage, containing the airport related infor-mation.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "WindForecastMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "distributeMap",
+            "description": "The map distribution service aims to provide requesting clients with the latest information of map data. A distinction is made between static, semi-dynamic and dynamic maps:\u2022Static: It is defined offline, and their contours cannot be modified on-line. Textual elements and\/or other display elements may be modified.\u2022Semi-dynamic: It is defined offline, and their contours can be modified on-line. Textual elements and\/or other display elements may be modified.\u2022Dynamic: They are created on-line. All of their contents may be modified.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "MapMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "distributeSystemMode",
+            "description": "The system mode distribution service provides to all connected & subscribed clients the following FDPS system information:\u2022System: Primary or Fallback\u2022System mode: Operational or Test mode\u2022System sub-mode: Authorised or unauthorised\u2022Link status: ON or OFF (link between Primary and Fallback)\u2022MTCD Status: ON or OFF\u2022MTCD Time Horizon\u2022FDPS degradation level\u2022FDPS SW and adaptation data versionFDPS coordinate projection parameters",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "SystemModeMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "distributeSpecialArea",
+            "description": "The special area distribution service provides all subscribed clients with the latest status of all special areas (e.g. TSA, TRA, etc.) residing at the server side. For each area the following information is provided:\u2022Airspace status:opre-warning (pending to be active within 15 minutes) oactiveoinactive\u2022Operation Mode:oManual (i.e. the special area activation\/de-activation is triggered by manual supervisor action)oScheduled (i.e. the special area activation\/de-activation is triggered automatically by following an activation\/de-activation schedule)\u2022The applicable lower and upper level related to the special area activation \u2022The start and end time related to the special area activation.\u2022In case of booking via LARA, additional LARA booking information, being:oUnique LARA reservation identifieroLARA activation statusoList of callsigns involved in the missionoMission typeoPermeable or non-permeable indicator",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "SpecialAreaMessage",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "service\u00a0behaviour",
+            "description": "<p>The&nbsp;service&nbsp;behaviour&nbsp;is&nbsp;described&nbsp;in&nbsp;text&nbsp;and&nbsp;diagrams&nbsp;in&nbsp;various&nbsp;sections&nbsp;of&nbsp;the&nbsp;specification&nbsp;document&nbsp;(see&nbsp;SERVICE_SPECIFICATION&nbsp;in&nbsp;service&nbsp;documents).<\/p>"
+          }
+        ]
+      },
+      {
+        "name": "HeartbeatDistribution",
+        "description": "<p>HeartbeatDistribution<\/p>",
+        "interfaceProvisionSide": "CONSUMER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "FIRE_AND_FORGET",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceBindingDescription": "AMQP 1.0 content-type header used to specify media type values",
+        "operation": [
+          {
+            "name": "No_Operation",
+            "description": "<p>No operation required<\/p>",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "service behaviour",
+            "description": "<p>The&nbsp;service&nbsp;behaviour&nbsp;is&nbsp;described&nbsp;in&nbsp;text&nbsp;and&nbsp;diagrams&nbsp;in&nbsp;various&nbsp;sections&nbsp;of&nbsp;the&nbsp;specification&nbsp;document&nbsp;(see&nbsp;SERVICE_SPECIFICATION&nbsp;in&nbsp;service&nbsp;documents).<\/p>"
+          }
+        ]
+      },
+      {
+        "name": "FlightPlanDataManagement",
+        "description": "<p>The Flight Plan Data Management service supports any connecting CWP client to send certain inputs in order to trigger the correct &amp; latest up-to-date controller information, more specifically: \u2022 Create ASPL or SFPL, \u2022 Modify an ASPL\/SFPL or upgrade an SFPL, \u2022 Downgrade an SFPL into an ASPL, \u2022 Delete an existing ASPL\/SFPL, \u2022 Submit requests about instructions\/clearances given to the flight crew (e.g. DCT, CFL, NFL, speed, heading, \u2026) \u2022 Change status information regarding the flight\u2019s airframe (e.g. no FSSA, RVSM status, \u2026) \u2022 Etc. When an input is made and successfully processed the response to the request is delivered in two parts: \u2022 Each input is first replied with the AcknowledgementMessage to indicate the acceptance or rejection of the request. The client is expected to start an internal timer in order to capture those cases where there would be no reply. In case of the latter, the client is expected to trigger a new input. \u2022 Secondly, provided the input was accepted, the updated information (as delivered by the Flight Plan Distribution service) on the flight is sent. As such, subscription to the Flight Plan Distribution service is mandatory prior the user requesting flight data modifications.<\/p>",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "SYNCHRONOUS_REQUEST_RESPONSE",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceBindingDescription": "AMQP 1.0 content-type header used to specify media type values",
+        "operation": [
+          {
+            "name": "createModifyFPL",
+            "description": "The operation allows to:\u2022Create ASPL or SFPL,\u2022Modify an ASPL\/SFPL,\u2022Upgrade an ASPL into SFPL,\u2022Downgrade an SFPL into an ASPL.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestCreateModifyFPL message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "changeAcStatus",
+            "description": "The operation allows modifying:\u2022number of aircraft related to a flight plan\u2022aircraft type\u2022flight\u2019s wake-turbulence category\u2022flight\u2019s deviation status\u2022RVSM capability\u20228.33 kHz capability\u2022UHF equipment\u2022BRNAV\/PRNAV equipment\u2022ModeS capability\u2022Number of people on board\u2022FSSA capability\u2022Avoiding weather indicator\u2022Fuel dumping indicator",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestChangeAcStatus message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "changeCallsign",
+            "description": "The operation allows to:\u2022Modify the callsign of an existing ASPL or SFPL.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestChangeCallsign message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "deleteFPL",
+            "description": "The operation allows to manually deleting an existing ASPL or SFPL from the system.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestDeleteFPL message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "retrieveFlight",
+            "description": "The operation allows retrieving manually the flight plan data (Flight Plan Data Message) for an existing ASPL or SFPL from the system.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestRetrieveFlight message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "manageDCT",
+            "description": "From an operational perspective, a DCT action can represent multiple cases. The interface definition has been considered to fulfil the op-erational scenarios listed below. For completeness reasons the required options to be passed in the RequestDCT input are given below:\u2022DCT to a (intermediate) PointotoAllows the sending of a single route point name (or coordinate) with optional intermediate point. In this case, the MSB-CB will automatically determine the most likely type of DCT instruction given (i.e. make the distinction between \u201cto-original-route\u201d and \u201cto-trajectory\u201d as given below). From an interface and client implementation perspective this option allows to perform DCT actions without the requirement for the client to reference to index in the trajectory. Also, this option allows also performing a DCT instruction for an ASPL  for which no trajectory is available.\u2022DCT to Point on the Trajectory (Uplink = UM74)oto-trajectory\uf0a7intermediate-point not sent\uf0a7end-point represents the index point and posi-tion in the trajectory\u2022DCT to Point on the Original Route (Uplink = UM74 + UM72)oto-original-route\uf0a7intermediate-point not sent\uf0a7end-point represents the point name (located on the original route)\u2022DCT to (Intermediate) Point not located on the trajectory; in this case the end-point is on the trajectory (Uplink = UM79: \"CLEARED TO [end-point] VIA [intermediate-point])oto-trajectory\uf0a7intermediate-point represents the route point name or position of the intermediate point\uf0a7end-point represents the index point and posi-tion in the trajectory\u2022DCT to (Intermediate) Point not located on the trajectory; in this case the end-point is on the original route (Uplink = UM79: \"CLEARED TO [end-point] VIA [intermediate-point] + UM72)oto-original-route\uf0a7intermediate-point represents the route point name or position of the intermediate point\uf0a7end-point represents the point name (located on the original route)\u2022DCT to (Intermediate) Point not located on the trajectory, and no end-point specified. In this case, the DCT is considered to be a point completely off-route, which is not to be rejoined. A typical example is a DCT to a point outside the AoI, which is not located on the trajectory (Uplink = UM74).oto-trajectory\uf0a7intermediate-point represents the route point name or position of the intermediate point\uf0a7end-point represents the null index pointNote 1: A current heading restriction will be removed upon receiving a DCT input.Note 2: For ASPLs, a DCT to an Intermediate OR End Point is allowed (with whatever DctData option) provided any reference to a trajectory point is populated with the null-TrajectoryPointNumber. Inputs combining both Intermediate AND End Point will not be processed.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestDCT message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "changeRoute",
+            "description": "From an operational perspective, a change route action represents a re-routing of the flight across multiple waypoints (unlike a DCT where the flight is instructed to go to only one waypoint).Note 1: A current heading restriction will be removed upon receiving Operation changeRoute.Note 2: Only available for SFPLs.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestChangeRoute message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "manageHeading",
+            "description": "The interface definition has been compiled taking into account the operational cases listed below. For completeness reasons the possible parameters, for such situations, to be passed in the RequestHeading input are indicated as well:\u2022Present Heading (uplink possible)\u2022Assigned Heading \u2013 relative or absolute true\/magnetic heading (uplink possible)\u2022Non-specified Heading; use track direction as heading and update trajectory with this value (no uplink possible)\u2022Heading to avoid weather, for example CBs;  use track direction as heading an generate an observed tactical trajectory with it (no uplink possible)In the first three cases above, the type of heading closure is mandatory in the request. The following cases have been distinguished in case the application limit and trajectory resuming point are included in the request:\u2022No application limit and rejoining point specified in the input: a default application limit will be applied and the trajectory will be closed based on pre-defined closure rules.\u2022Application limit specified as distance and rejoining point present in the request: the specified distance and rejoining-point will be applied.\u2022Application limit specified as \u201cIndefinite\u201d: the system will auto-close the trajectory at AoR exit.In all cases, the input heading is considered as magnetic heading.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestHeading message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "manageXheading",
+            "description": "The command allows resetting a previous heading instruction for ASPLs only. In case the command is requested for an SFPL, the result will be returned with an error.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestXheading message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "manageCFL",
+            "description": "To process the input of a cleared flight level, with application time\/distance and\/or ROCD restriction.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestCFL message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "manageECL",
+            "description": "To process the input of an enroute cruising level. The ECL is applied until the exit of the AoI (i.e. propagated all the way), unless the ap-plication-limit is present in the request.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestECL message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "manageRFL",
+            "description": "To process the input of a requested flightlevel as requested by the pilot or filed by the airline company.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestRFL message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "managePFL",
+            "description": "To process the input of a planned flight level (PFL). The PFL is best described as an ECL, but only applied until the requesting sector\u2019s exit.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestPFL message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "manageSpeed",
+            "description": "The interface definition has been compiled taking into account the operational cases listed below: \u2022Present speed (uplink possible)\u2022Assigned speed, including route point until where the speed restriction should apply (uplink possible)\u2022Speed range, including route point until where the speed re-striction should apply (between a lower and upper speed)\u2022Minimum or Maximum speed instruction, including route point until where the speed restriction should apply (uplink possible)\u2022Keyword, to represent a pure textual speed instruction to the ATCO (e.g. CLEAN speed) without affecting the flight\u2019s calculat-ed profile\u2022Resume speed, to cancel any previous speed restriction (uplink possible)",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestSpeed message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "service behaviour",
+            "description": "<p>The&nbsp;service&nbsp;behaviour&nbsp;is&nbsp;described&nbsp;in&nbsp;text&nbsp;and&nbsp;diagrams&nbsp;in&nbsp;various&nbsp;sections&nbsp;of&nbsp;the&nbsp;specification&nbsp;document&nbsp;(see&nbsp;SERVICE_SPECIFICATION&nbsp;in&nbsp;service&nbsp;documents).<\/p>"
+          }
+        ]
+      },
+      {
+        "name": "SectorSpecificDataManagement",
+        "description": "The Sector Specific Data Management service supports any connecting CWP client to send certain inputs in order to trigger the correct & latest up-to-date controller information regarding sector-specific information and coordination & transfer information, more specifically:\u2022Allow taking control of a flight (or proposing hand-over, request-on-frequency, etc.),\u2022Change the coordinated entry and exit levels,\u2022Deliver departure clearance for an flight departing from an internal aerodrome,\u2022Skip and cancel-skip of an internal sector,\u2022Bypass and cancel-bypass of the 1st downstream internal sector,\u2022Delegate the flight to another internal sector,\u2022Change the next downstream internal sector into the preferred one,\u2022Change the entry\/exit frequency of sectors,\u2022Etc.When an input is made and successfully processed the response to the request is delivered in two parts:\u2022Each input is first replied with the AcknowledgementMessage to indicate the acceptance or rejection of the request. The client is expected to start an internal timer in order to capture those cases where there would be no reply. In case of the latter, the client is expected to trigger a new input.\u2022Secondly, provided the input was accepted, the updated information (as delivered by the Flight Plan Data Distribution & Sector Specific Data Distribution service) on the flight is sent. As such, subscription to the both aforementioned services is mandatory prior the user requesting sector specific data modifications. ",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "SYNCHRONOUS_REQUEST_RESPONSE",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceBindingDescription": "AMQP 1.0 content-type header used to specify media type values",
+        "operation": [
+          {
+            "name": "manageControl",
+            "description": "To process the input of a control input command, to allow either:\u2022Take control of the flight,\u2022Transfer control of the flight,\u2022Delegate control of the flight to the sector where the flight is geographically located,\u2022Hand-over propose\/accept.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestControl message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "manageNFL",
+            "description": "To process the input of an entry flightlevel for the coordination between internal sectors or with the external upstream partner. ",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestNFL message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "manageTFL",
+            "description": "To process the input of a transfer flightlevel for the coordination between internal sectors or with the external downstream partner.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestTFL message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "changeSectors",
+            "description": "The operation allows to:\u2022Skip and cancel-skip of an internal sector,\u2022Bypass and cancel-bypass of the 1st downstream internal sector,\u2022Delegate the flight to another internal sector,\u2022Change the next downstream internal sector into the pre-ferred one.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestChangeSectors message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "changeEntryCoordination",
+            "description": "The operation allows performing coordination changes related to the entry of the sector performing the request. The operation applies to both internal and external entry coordination.Changes to the following items can be requested, or negotiated:\u2022NFL & NSFL (as also possible with requestNFL \u2013 see section 3.6.4)\u2022Departure level  (indicates the initial cleared level for departure flights out of an internal aerodrome)\u2022ETO (Estimated Time Over)\u2022COP (Coordination Point)\u2022PSSR (Present SSR Code)\u2022DCT-to point (including intermediate point if required)\u2022Accepting Frequency\u2022Speed\u2022Heading",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestEntryCoordination message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "changeExitCoordination",
+            "description": "The operation allows performing coordination changes related to the exit of the sector performing the request. The operation applies to both internal and external exit coordination.Changes to the following items can be requested, or negotiated:\u2022TFL & TSFL (as also possible with requestTFL \u2013 see section 3.6.5)\u2022ETO (Estimated Time Over)\u2022COP (Coordination Point)\u2022PSSR (Present SSR Code)\u2022DCT-to point (including intermediate point if required)\u2022Transferring Frequency\u2022Speed\u2022Heading",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestExitCoordination message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "manageDepartureClearance",
+            "description": "The operation allows performing a departure clearance (for a flight departing from an internal aerodrome). For example, a TWR sector can perform this action, or eventually a higher sector that has to deliver the departure clearance.Items available in the departure clearance are kept limited for the first phase and include:\u2022Departure level  (indicates the initial cleared level for departure flights out of an internal aerodrome)\u2022Take-off time\u2022PSSR (Present SSR Code)\u2022Accepting Frequency\u2022SID\u2022Departure runway",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestDepartureClearance message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "changeFreq",
+            "description": "The operation allows an OPS sector:\u2022To select the frequency to be sent to the transferring previ-ous adjacent center or internal sector,\u2022To select the default for the frequency to be sent to the transferring previous adjacent center or internal sector,\u2022To change the exit frequency with the next partner or internal sector,\u2022To reset the exit frequency.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestChangeFreq message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "service behaviour",
+            "description": "<p>The&nbsp;service&nbsp;behaviour&nbsp;is&nbsp;described&nbsp;in&nbsp;text&nbsp;and&nbsp;diagrams&nbsp;in&nbsp;various&nbsp;sections&nbsp;of&nbsp;the&nbsp;specification&nbsp;document&nbsp;(see&nbsp;SERVICE_SPECIFICATION&nbsp;in&nbsp;service&nbsp;documents).<\/p>"
+          }
+        ]
+      },
+      {
+        "name": "CorrelationManagement",
+        "description": "The Correlation Management service allows any connecting CWP client to perform inputs related to the linkage or unlinkage of flight plans with tracks, more specifically:\u2022Link a flight plan with a specific track,\u2022Unlink a flight plan from a specific track,\u2022Set the present, next or downstream SSR code a flight.When an input is made and successfully processed the response to the request is delivered in two parts:\u2022Each input is first replied with the AcknowledgementMessage to indicate the acceptance or rejection of the request. The client is expected to start an internal timer in order to capture those cases where there would be no reply. In case of the latter, the client is expected to trigger a new input.\u2022Secondly, provided the input was accepted, the updated information (as delivered by the Flight Plan Distribution service) on the flight is sent. As such, subscription to the flight plan distribution service is mandatory prior the user requesting flight data modifications. Additionally, if the user is subscribed to the Correlation Distribution service, extended correlation information will be sent. ",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "SYNCHRONOUS_REQUEST_RESPONSE",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceBindingDescription": "AMQP 1.0 content-type header used to specify media type values",
+        "operation": [
+          {
+            "name": "linkWithTrack",
+            "description": "To process the input of a manual linkage\/unlinkage request of a flight plan with a track.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestLink message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          },
+          {
+            "name": "setSsr",
+            "description": "To process the input of setting the present, next or downstream SSR code of a flight plan.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ],
+            "operationMessage": [
+              {
+                "name": "RequestSetSsr message",
+                "description": "",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "AcknowledgementMessage",
+                "description": "",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "service behaviour",
+            "description": "<p>The&nbsp;service&nbsp;behaviour&nbsp;is&nbsp;described&nbsp;in&nbsp;text&nbsp;and&nbsp;diagrams&nbsp;in&nbsp;various&nbsp;sections&nbsp;of&nbsp;the&nbsp;specification&nbsp;document&nbsp;(see&nbsp;SERVICE_SPECIFICATION&nbsp;in&nbsp;service&nbsp;documents).<\/p>"
+          }
+        ]
+      },
+      {
+        "name": "FlightBrightManagement",
+        "description": "<p>The Flight Bright Management service allows any connecting CWP client to perform inputs related to highlight of a track or flight plan, more specifically: \u2022 SSR Bright: o Add an SSR Code to the SSR Bright function for his OPS sector o Cancel all SSR Codes from the SSR Bright function for his OPS sector o Delete one SSR Code from the SSR Bright function for his OPS sector \u2022 ModeS Bright: o Add an ModeS callsign to the ModeS Bright function for his OPS sector o Cancel all ModeS callsign from the ModeS Bright function for his OPS sector o Delete one ModeS callsign from the ModeS Bright function for his OPS sector \u2022 FPL Bright: o Add a flight to the FPL Bright function for his OPS sector o Delete a flight from the FPL Bright function for his OPS sector o Add a flight to the FPL Bright function of another internal OPS Sector (by specifying an internal flight sector) o Point a flight to an external flight sector \/ centre When an input is made and successfully processed the response to the request is delivered in two parts: \u2022 Each input is first replied with the AcknowledgementMessage to indicate the acceptance or rejection of the request. The client is expected to start an internal timer in order to capture those cases where there would be no reply. In case of the latter, the client is expected to trigger a new input. \u2022 Secondly, provided the input was accepted, the updated information (as delivered by the Flight Bright Distribution service) on the flight is sent. As such, subscription to the Flight Bright distribution service is mandatory prior the user requesting modifications. Please do note that the distribution of the FlightBright message is OPS sector oriented.<\/p>",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "SYNCHRONOUS_REQUEST_RESPONSE",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceBindingDescription": "AMQP 1.0 content-type header used to specify media type values",
+        "operation": [
+          {
+            "name": "No_Operation",
+            "description": "<p>No Operation Defined<\/p>",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "service behaviour",
+            "description": "<p>The&nbsp;service&nbsp;behaviour&nbsp;is&nbsp;described&nbsp;in&nbsp;text&nbsp;and&nbsp;diagrams&nbsp;in&nbsp;various&nbsp;sections&nbsp;of&nbsp;the&nbsp;specification&nbsp;document&nbsp;(see&nbsp;SERVICE_SPECIFICATION&nbsp;in&nbsp;service&nbsp;documents).<\/p>"
+          }
+        ]
+      },
+      {
+        "name": "SectorisationManagement",
+        "description": "<p>The sectorisation management service provides any connecting client with the means to perform a re-sectorisation change. Two kind of requests can be made, being: \u2022 A request to verify a new sectorisation change (i.e. would the request once executed be valid for the server?), \u2022 A request to perform a sectorisation change. When an input is made and successfully processed the response to the request is delivered in two parts: \u2022 Each input is first replied with the AcknowledgementMessage to indicate the acceptance or rejection of the request. The client is expected to start an internal timer in order to capture those cases where there would be no reply. In case of the latter, the client is expected to trigger a new input. \u2022 Secondly, provided the input was accepted, the updated information (as delivered by the Sectorisation Distribution service) is sent. As such, subscription to the Sectorisation distribution service is mandatory prior the user requesting sectorisation modifications.<\/p>",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "SYNCHRONOUS_REQUEST_RESPONSE",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceBindingDescription": "AMQP 1.0 content-type header used to specify media type values",
+        "operation": [
+          {
+            "name": "No_Operation",
+            "description": "<p>No operation defined<\/p>",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "service behaviour",
+            "description": "<p>The&nbsp;service&nbsp;behaviour&nbsp;is&nbsp;described&nbsp;in&nbsp;text&nbsp;and&nbsp;diagrams&nbsp;in&nbsp;various&nbsp;sections&nbsp;of&nbsp;the&nbsp;specification&nbsp;document&nbsp;(see&nbsp;SERVICE_SPECIFICATION&nbsp;in&nbsp;service&nbsp;documents).<\/p>"
+          }
+        ]
+      },
+      {
+        "name": "SsrCodeManagement",
+        "description": "<p>The SSR code management service allows a client to reserve an SSR code for manual assignment later on (i.e. manual assignment by using the Operation setSsr service call), and to clear such code from display in the whole OPS sector.An SSR code reserved for manual assignment is not available for automatic assignment. The SSR code will be reserved during a design parameter time and then released if not manually assigned to any flight plan or released according to the standard release rules if manually assigned to a flight plan during this design parameter time. When an input is made and successfully processed the response to the request is delivered in two parts: \u2022 Each input is first replied with the AcknowledgementMessage to indicate the acceptance or rejection of the request. The client is expected to start an internal timer in order to capture those cases where there would be no reply. In case of the latter, the client is expected to trigger a new input. \u2022 Secondly, provided the input was accepted, the updated information (as delivered by the SsrCode Distribution service) is sent. As such, subscription to the SsrCode distribution service is mandatory prior the user requesting modifications.<\/p>",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "SYNCHRONOUS_REQUEST_RESPONSE",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_UNICAST",
+        "interfaceBindingDescription": "AMQP 1.0 content-type header used to specify media type values",
+        "operation": [
+          {
+            "name": "No_Operation",
+            "description": "<p>No operation defined<\/p>",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              ""
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "service behaviour",
+            "description": "<p>The&nbsp;service&nbsp;behaviour&nbsp;is&nbsp;described&nbsp;in&nbsp;text&nbsp;and&nbsp;diagrams&nbsp;in&nbsp;various&nbsp;sections&nbsp;of&nbsp;the&nbsp;specification&nbsp;document&nbsp;(see&nbsp;SERVICE_SPECIFICATION&nbsp;in&nbsp;service&nbsp;documents).<\/p>"
+          }
+        ]
+      }
+    ],
+    "serviceDescriptionReferences": {
+      "serviceDocument": [
+        {
+          "title": "D2.4 Annex : OpenCWP Service Yellow SWIM Profile",
+          "description": "<p>The&nbsp;official&nbsp;OpenATM&nbsp;service&nbsp;definition&nbsp;as&nbsp;published,&nbsp;including&nbsp;the&nbsp;information&nbsp;definition,&nbsp;service&nbsp;behaviour,&nbsp;numerous&nbsp;diagrams&nbsp;(interfaces,&nbsp;sequence&nbsp;and&nbsp;others),&nbsp;&nbsp;additional&nbsp;technical&nbsp;details,&nbsp;and&nbsp;conformance&nbsp;matrix&nbsp;to&nbsp;the&nbsp;SWIM&nbsp;Service&nbsp;Description&nbsp;specification<\/p>",
+          "version": "1.0 (Released)",
+          "reference": "public:\/\/2020-07\/ADaaS_WP2_MUAC_D2_4_OpenCWPService v1.0.pdf",
+          "documentType": "SERVICE_SPECIFICATION"
+        },
+        {
+          "title": "Semantic Correspondence",
+          "description": "<p>The&nbsp;AIRM&nbsp;Semantic&nbsp;Correspondence.&nbsp;The&nbsp;correspondence&nbsp;was&nbsp;performed&nbsp;on&nbsp;AIRM&nbsp;4.1.0&nbsp;(sesarju:airm:v410).<\/p>",
+          "version": "1.0",
+          "reference": "public:\/\/2020-07\/AdaaS_AIRM_mapping.xlsx",
+          "documentType": "AIRM_TRACE"
+        },
+        {
+          "title": "XML Schema",
+          "description": "<p>The&nbsp;XSD&nbsp;definition&nbsp;files&nbsp;are&nbsp;embedded&nbsp;in&nbsp;the&nbsp;following&nbsp;package<\/p>",
+          "version": "",
+          "reference": "public:\/\/2020-07\/AdaaS.XSD",
+          "documentType": "MACHINE_READABLE_SERVICE_DESCRIPTION"
+        },
+        {
+          "title": "ASN.1 files",
+          "description": "<p>The&nbsp;ASN.1&nbsp;files&nbsp;are&nbsp;embedded&nbsp;in&nbsp;the&nbsp;following&nbsp;package<\/p>",
+          "version": "",
+          "reference": "public:\/\/2020-07\/CB-Messages-ASN1.tar.gz",
+          "documentType": "MACHINE_READABLE_SERVICE_DESCRIPTION"
+        },
+        {
+          "title": "Example",
+          "description": "<p>\"A&nbsp;nice&nbsp;little&nbsp;program&nbsp;that&nbsp;explains&nbsp;the&nbsp;service&nbsp;consumer&nbsp;step-by-step&nbsp;on&nbsp;how&nbsp;to&nbsp;connect.<\/p>",
+          "version": "",
+          "reference": "public:\/\/2020-07\/cb_example_01.tar",
+          "documentType": "CODE_EXAMPLE"
+        }
+      ]
+    }
+  }
+}

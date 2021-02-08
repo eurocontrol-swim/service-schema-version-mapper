@@ -1,0 +1,1296 @@
+{
+  "informationService": {
+    "descriptionInformation": {
+      "serviceDescriptionIdentification": {
+        "serviceDescriptionTitle": "CCS FlightDataDistribution",
+        "serviceDescriptionEdition": "1.0.0",
+        "serviceDescriptionReferenceDate": "01/07/2020"
+      }
+    },
+    "name": "CCS FlightDataDistribution",
+    "version": "1.0.0",
+    "serviceAbstract": "<p>This Service is part of Coflight Cloud Services (CCS), which are primarily designed to support the Virtual Centre concept. As such, these CCS Services support the interactions between the CCS ATM Data Service Provider (ADSP) and Virtual Centre Air Traffic Service Units (ATSUs). The CCS FlightDataDistribution service is consistent with the other CCS services. It supports:<\/p><p>- the distribution of Flight Plan information every time an update of a relevant Flight Plan is processed by the ADSP. The modifications of the Flight Plans can be triggered from several sources (other CWPs or functionality of the ADSP).<\/p><p>- The distribution of Erroneous AFTN messages information referred to FDO for manual correction, every time an AFTN message reception fails Coflight checks. This version of the service is intended to be used in 'test mission', which aims at providing services and support to the Customer(s) to enable them to test any version of their ATM system during development.<\/p>",
+    "serviceCategorisation": {
+      "serviceType": "SWIM_CANDIDATE",
+      "lifeCycleStage": "PROSPECTIVE",
+      "businessActivityType": [
+        "INFORMATION_MANAGEMENT"
+      ],
+      "informationCategory": [
+        "FLIGHT_INFORMATION_EXCHANGE"
+      ],
+      "intendedConsumer": [
+        "CIVIL_AIR_NAVIGATION_SERVICE_PROVIDER"
+      ],
+      "applicationMessageExchangePattern": [
+        "PUBLISH_SUBSCRIBE",
+        "SYNCHRONOUS_REQUEST_REPLY"
+      ],
+      "geospatialCategorisation": {
+        "aerodromeICAOLocationIndicator": [
+          ""
+        ],
+        "stateICAONationalityLetters": [
+          ""
+        ],
+        "firICAOLocationIndicator": [
+          ""
+        ]
+      }
+    },
+    "serviceProvision": {
+      "dateInOperation": "",
+      "provider": "DSNA&ENAV",
+      "providerDescription": "<p>DSNA: the French air navigation service provider<\/p><p>ENAV; the Italian air navigation service provider<\/p>",
+      "providerType": [
+        "CIVIL_AIR_NAVIGATION_SERVICE_PROVIDER"
+      ],
+      "serviceSupport": "",
+      "pointOfContact": [
+        {
+          "name": "Guillaume Ramonet",
+          "description": "Coflight Cloud Services Program Director - To request access to the CCS service",
+          "email": "Guillaume.Ramonet@aviation-civile.gouv.fr",
+          "phoneNumber": ""
+        },
+        {
+          "name": "Service Desk",
+          "description": " - For Incidents on services in operation, contact the Service desk [working hours\/opening days] as described in the related support service (incident management) supplied by CCS provider to CCS customer during the procurement phase",
+          "email": "",
+          "phoneNumber": ""
+        }
+      ]
+    },
+    "serviceGeneralDescription": {
+      "operationalNeed": [
+        {
+          "name": "1",
+          "description": "<p>CCS FlightDataManagement Service addresses the CWP manual interactions for managing Flight Plan updates related to inputs made by the controller or by the Flight Data Operator. It addresses operations related to:<\/p><p>- the System Flight Plan Data: Create, Cancel, Delete, Retrieve, Create Abbreviated and Non tactical modifications,<\/p><p>- to ATC Instructions: Holding, Heading, Speed, CFL, ROCD, EFL, XFL, DirectTo, ClearedTo, RFL and ECL,<\/p><p>- the correction of erroneous AFTN messages,<\/p><p>- WhatIf: Accept\/Reject and Open\/Close.<\/p><p>Note: in this version of the document, CCS FDM contains all the operations listed above except those related to WhatIf.<\/p>"
+        }
+      ],
+      "functionality": [
+        {
+          "name": "Functionality 1",
+          "description": "Process a Cleared Flight Level instruction",
+          "realWorldEffect": "The trajectory of the flight is updated accordingly."
+        },
+        {
+          "name": "Functionality 2",
+          "description": "Process a Direct instruction",
+          "realWorldEffect": "The trajectory of the flight is updated with the direct clearance."
+        }
+      ],
+      "qualityOfService": [
+        {
+          "name": "Services level objectives",
+          "description": "The service level objectives regarding the availability, response time, throughput and recoverability of CCS Services depend on the purpose (mission) for which the Customer intend to use them (e.g. integration, test, training, operational purpose).These service level objectives are therefore negotiated with the Customers, based on their safety analysis, and are detailed in the specific Service Level Agreement established with each CCS Customer."
+        },
+        {
+          "name": "Network performance",
+          "description": "The minimum Bandwidth required to consume CCS services (hypothesis for the technical integration service of 300 simultaneous flight managed by the system) is 10MB\/s."
+        },
+        {
+          "name": "Rate limitation",
+          "description": "Customer ATSU shall restrict the overall rate of requests to a maximum of 720 request\/minutes. The detailed rate limitation per services is detailed in the associated swim service description of each service."
+        }
+      ]
+    },
+    "serviceInformationDescription": {
+      "informationDefinition": [
+        {
+          "name": "AFTNAddressType",
+          "description": "8 LETTERS, being the 4-letter ICAO location indicator plus the 3-letter designator of the ATS unit followed by the letter X or, if applicable, the one-letter designator identifying the division of the ATS unit.",
+          "airmConformant": false
+        },
+        {
+          "name": "AFTNFieldType",
+          "description": "The label of the AFTN field (ADEXP primary field or the ICAO sub-field):ADEXP: ADES, ADESOLD, ROUTE, WKTRC...ICAO: F3c, F9b, F15b, F81...",
+          "airmConformant": false
+        },
+        {
+          "name": "AerodromeIdentificatorType",
+          "description": "Identifier of an aerodrome.",
+          "airmConformant": false
+        },
+        {
+          "name": "AirSpeed",
+          "description": "Airspeed value expressed in knot or in mach.",
+          "airmConformant": false
+        },
+        {
+          "name": "AircraftIDType",
+          "description": "The identifier of an aircraft",
+          "airmConformant": false
+        },
+        {
+          "name": "AircraftMassType",
+          "description": "Aircraft mass in kilograms",
+          "airmConformant": false
+        },
+        {
+          "name": "AircraftTypeType",
+          "description": "The designator(s) of the aircraft type(s) (e.g. B747).",
+          "airmConformant": false
+        },
+        {
+          "name": "AirwayNameType",
+          "description": "The name by which the route is known.",
+          "airmConformant": false
+        },
+        {
+          "name": "AltitudeValue",
+          "description": "Simple class providing an altitude value.",
+          "airmConformant": false
+        },
+        {
+          "name": "Application",
+          "description": "This class gathers all the possible parameters specifying the start (application) and end (targetEnd) of the application of an ATC Instruction.These parameters can be specified by a point or a distance and their usage may be applicable depending on the type of ATC Instruction.",
+          "airmConformant": false
+        },
+        {
+          "name": "ApplicationAddressType",
+          "description": "Address of the following applications:- for CM application, it represents the transport layer address.- for CPDLC, it represents the ATN address of the CPDLC application.- for ADS, it represents the ATN address of the ADS applications. Note: The field length shall be either 36 or 38 hexadecimal characters. The character \"\\0\" is added to indicate a 36 characters' string end.",
+          "airmConformant": false
+        },
+        {
+          "name": "ApplicationEnd",
+          "description": "This class encompasses all the parameters related to the end of an application: time, point, duration.The applicationEnd parameters are only applicable to CFL (routePointId), Route (routePointId), heading (point) and holding (point, absoluteTime, durationTime).absoluteTime and durationTime are mutually exclusive.",
+          "airmConformant": false
+        },
+        {
+          "name": "ApplicationKindType",
+          "description": "The ATN Air-Ground application type.Note: 0 for ADS, 2 or 22 for CPDLC and 3 for ATI.",
+          "airmConformant": false
+        },
+        {
+          "name": "ApplicationStart",
+          "description": "Common classThis class encompasses all the parameters related to the start of an application: point (current position), routePoint, distance and relativeDistance.Depending on the instructions, the applicationStart parameters can be either:-a point and\/or a distance,or-a routePointId,or-a routePointId and a relativeDistance.Limitation CCS: the applicationStart parameters related to a time are not managed by CCS.",
+          "airmConformant": false
+        },
+        {
+          "name": "ApplicationType",
+          "description": "The label of the application:Ex.: GGDA, GGDO, ASP, CONF, FDPS\u0085",
+          "airmConformant": false
+        },
+        {
+          "name": "ApplicationVersionType",
+          "description": "Version of the Air-Ground application (ADS and CPDLC for FANS 1\/A flights, ADS, CPDLC and ATI for ATN flights).Note: Defined as 1{'00'|'01}1 for FANS 1\/A flights (ADS and CPDLC) and as 1{'00'|'01'|'02'}1 for ATN flights (ADS, CPDLC and ATI).",
+          "airmConformant": false
+        },
+        {
+          "name": "BooleanType",
+          "description": "Boolean",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeAFTNMessageType",
+          "description": "Type of AFTN messageLimitation CCS : ACH and APL are not applicable to Coflight.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeATXEmergencyStatusType",
+          "description": "Asterix062 definition of an emergency status.CCS uses only the 3 values below:-GENERAL_EMERGENCY, when code SSR = 7700,-NO_COMMUNICATIONS, when code SSR = 7600,-UNLAWFUL_INTERFERENCE, when code SSR = 7500.Limitation CCS: The other values are not handled by CCS.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeAircraftCommunicationDefectType",
+          "description": "Possible error states of a radio channel or frequency.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeBoundaryPointType",
+          "description": "Indicates how the boundary between two ATC will be crossed",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeConstraintStatusType",
+          "description": "Status supporting the state of a Constraint:ACTIVE: In this case, the constraint is active but not yet ongoing.ONGOING: The constraint is active and ongoing (i.e. its Application Point has been overflown).INACTIVE: A constraint ignored by profile prediction as it has been overridden by another constraint.TERMINATED: A constraint which is no longer ongoing.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeCoordinationAndTransferStatusType",
+          "description": "Enumeration specifying the status of a coordination or transfer procedure:- ABROGATED: the coordination is abrogated (XFL change, re-route...).- ACCEPTED: the coordination or the proposal is accepted.- ASSUMED: the flight has been assumed by the receiving responsibility.- COMMUNICATION_SKIPPED: the transition is skipped (when the receiving responsibility is skipped and the transferring gets the control of the flight). - DEASSUMED: the assumed flight has been assumed by another unexpected responsibility.- FREQUENCY_CHANGED: the transfer is ongoing over the transition (ie. the receiving Sector is assumable).- HANDED_OVER: the flight is no longer under control of the receiving responsibility.- HANDOVER_ACCEPTED: a hand over proposal over the transition has been accepted.- HANDOVER_PROPOSED: a hand over proposal is ongoing over the transition.- INITIAL: initial state of a coordination dialogue.- NOTIFIED: to indicate the notification phase of this transition. - PROPOSED: a coordination proposal or counter-proposal is ongoing over the transition.- REJECTED: the coordination or the proposal is rejected.- RELEASED: the flight has been instructed to contact the  responsibility following the receiving responsibility.- REQUEST_ON_FREQUENCY: the frequency has been requested by the receiving responsibility.- TRANSFER_INITIATED: to indicate the initiation of the transfer phase for this transition (ie. OLDI TIM message).Limitation CCS: The following values are not handled by CCS: HANDOVER_REJECTED, NOT_RELEASED, RELEASE_REQUESTED.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeDirectionIndicatorType",
+          "description": "The direction types:- DOWNSTREAM: coordination data for a downstream transition.- UPSTREAM: coordination data for an upstream transition.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeDirectionTurnType",
+          "description": "Indicates the direction of a turn (left, right)",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeETOInvalidReason",
+          "description": "Enumeration indicating the reason of ETO invalidity:- INDEFINITE_HOLD: Holding without exit time.- INVALID_DISTANCE: Invalid distance- ROUTE_DISCONTINUITY: Temporal-spatial discontinuities (TP-AREA re-entrance and unknown route items).- SUSPENDED_FLIGHT: The flight is suspended.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeEquipmentStatusType",
+          "description": "Enumeration indicating which equipment is available in an aircraft:- EQUIPPED: the flight is equipped and the equipment is available for use by the flight- NOT_EQUIPPED: the flight is not equipped or the flight is exempted to have the equipment or for any reason the equipment cannot be used by the flight.- UNKNOWN: the capability is unknown.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeFlightPlanStatusType",
+          "description": "To indicate the current status of the flight plan:- ACTIVE: one of the internal SFPL segment is LIVE.- TERMINATED: the flight plan status is set to TERMINATED when all internal and external SFPL segments of controlled sectors are LEFT.- PASSIVE: when conditions to set it to ACTIVE or TERMINATED are not fulfilled.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeFlightPlanType",
+          "description": "To indicate the type of the flight plan:- AFPL: the SFPL is an abbreviated flight plan (some ICAO basic fields only, no computed data).- SFPL: the SFPL is a full SFPL (with all ICAO basic fields and all computed data such as profile, distribution...).",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeFlightRulesStatusType",
+          "description": "Indicates the status of the flight rules in each Route Point (VFR or IFR)",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeFlightRulesType",
+          "description": "An indication of the flight rules which are applicable:- IFR if ICAO rule is I- VFR if ICAO rule is V- IFR_FIRST if ICAO rule is Y- VFR_FIRST if ICAO rule is Z",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeFlightType",
+          "description": "Flight category according to ICAO:- SCHEDULED: if ICAO type is S (scheduled air transport)- NOT_SCHEDULED: if ICAO type is N (non-scheduled air transport)- GENERAL: if ICAO type is G (general aviation)- MILITARY: if ICAO type is M (military flights)- OTHER: if ICAO type is X (other flights) ",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeHeadingClearanceRestrictionType",
+          "description": "Code indicating the kind of restriction associated to a flight heading ATC clearance",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeHeadingType",
+          "description": "Enumeration which specifies the kind of heading of a clearance (absolute or relative)",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeHoldingStatusType",
+          "description": "Enumeration which indicates the status of a holding clearance (PLANNED_TO_HOLD, CLEARED_TO_HOLD, HOLDING, CLEARED_TO_LEAVE_HOLD)",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeIndicationROCDType",
+          "description": "NORMAL: Normal VRCD to use.EXPEDITE: Expedite VRCD to use.EMERGENCY: Emergency VRCD to use (only in descent).",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeLevelClearanceRestrictionType",
+          "description": "Code indicating the kind of restriction associated to a flight level ATC clearance:IMMEDIATE: this is a climb or descentCFL instruction.WHEN_READY: this is an inputCFL instruction.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeMessageFormatType",
+          "description": "Format of the AFTN message. It can be ADEXP or ICAO ",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeOldiMessageKindType",
+          "description": "To indicate the OLDI message corresponding to the C&T process.  ",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeProgressOfFlightType",
+          "description": "Indicates the state of progress of the flight related to the traversal of the AoR:  - NEAR_PLANNING: the flight is approaching the AoR (for external coordination) or the sector (for internal coordinations) at such distance\/time that it is concerned by the coordination or the coordination has been forced manually.- NEAR_EXE: the flight is approaching the AoR at such distance\/time that it is concerned by executive control.- ENTERED: the flight has entered the traversal of the AoR.- EXITED: the flight has exited the traversal of the AoR.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeReferralType",
+          "description": "Indicates the kind of referral :-CORRECTION:Erroneous message referred for correction.-BLOCKED:Message potentially correct, referred because at least another erroneous message concerning the same SFPL has already been referred to FDO.-NOT_CHECKED:Message systematically referred to FDO without processing according to off-line configuration.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeSSRModeType",
+          "description": "Code describing the different modes of surveillance.- MODE_3A : The identification of an aircraft as reported by its SSR transponder. This 12-bits code is manually set by the pilot on request of ATC. This code is often called the 'squawk identification' and is usually represented as 4 octal digits (e.g. 0627). Special codes are reserved for emergency situations (7500 = hijack, 7600 = radio failure, 7700 = general emergency). (often abbreviated as: SSR code).- MODE_A-C : The altitude of an aircraft as reported by its SSR transponder expressed in flight levels. Possible values are between FL 12 and FL 1267.- MODE_S : An enhanced mode of SSR which permits the interrogation of SSR equipped aircraft and addressed interrogations with two way data exchange for suitably equipped aircraft- INTERMODE : aircraft mode S equipped that can answer to mode A or mode C interrogations.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeSectorStateType",
+          "description": "To indicate the possible use of a sector:DELEGATED: the sector responsibility has been delegated.SKIPPED: the sector responsibility has been manually skipped or automatically skipped.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeSegmentCategoryType",
+          "description": "Indication of the segment category.This includes the possible segment categories according to their entry and exit conditions:The enumerate is a union of entry and exit conditions.Entry condition corresponds to:- DEPARTURE: internal segment containing the ADEP.- INBOUND: internal segment that doesn't contain the ADEP and has no upstream internal segment or its upstream internal Segment belongs to another ATSU- MIXED_IN: internal segment that doesn't contain the ADEP and has an upstream internal segment for which flight rule \/ flight type are different.Exit condition corresponds to:- ARRIVAL: internal segment containing the ADES.- OUTBOUND: internal segment that doesn't contain the ADES and has no downstream internal segment or its downstream internal Segment belongs to another ATSU- MIXED_OUT: internal segment that doesn't contain the ADES and has an downstream internal segment for which flight rule \/ flight type are different",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeSegmentClassType",
+          "description": "Enumeration which defines the class of a segment:For internal segments:CONTROLLED: Value for an internal segment corresponding to the traversal of a controlled ATSU.REGION: Value for an internal segment corresponding to the traversal of an ATSU of the region not controlled by the system instance.IOP: Value for an internal segment corresponding to the traversal of an ATSU of the IOP area not belonging to the region.OLDI: Value for an internal segment corresponding to the traversal of an OLDI ATSU not belonging to the region.AFTN: Value for an internal segment corresponding to the traversal of an AFTN ATSU not belonging to the region.UNKNOWN: Default value.For external segments:CONTROLLED: Value for an external segment corresponding to the traversal (AoI) of a controlled ATSU.NOT_CONTROLLED: Value for external segments other than CONTROLLED.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeSegmentKindType",
+          "description": "Type of a Segment: - INTERNAL: Traversal of an ATSU AoR by an SFPL, for one flight rule (IFR\/VFR) and one flight type (OAT\/GAT) applicable in the traversal.- EXTERNAL: - Traversal of an ATSU AoI by an SFPL that does not enter the AoR, for one flight rule (IFR\/VFR) and one flight type (OAT\/GAT) applicable in the traversal.- Traversal of a military (resp. civil) ATSU AoI by a GAT (resp. OAT) flight.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeSegmentStateType",
+          "description": "The state value of a segment.For internal segments:- MONITORED: default value: the controlled segment is created.- PENDING: the notification phase has been started for this controlled segment of the SFPL.- LIVE: the coordination phase has been started for this controlled segment of the SFPL. - LEFT: the transition to LEFT segment state occurs a delay (off-line predefined) after the flight has left the AOI of the controlled ATSU.-NONE: this is the fixed value of all internal SFPL segments which are not controlled by the system instance (i.e. all internal segments which class is REGION, IOP, OLDI, AFTN or UNKNOWN).For external segments:- PENDING: default value: controlled external segment created- LIVE: the flight is detected inside the controlled external segment AOI- LEFT: the transition to LEFT segment state occurs a delay (off-line predefined) after the flight has left the AOI of the controlled ATSU.- NONE: this is the fixed value of all external SFPL segments which are not controlled by the system instance (i.e. all external segment which class is NOT_CONTROLLED).",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeSpeedClearanceRestrictionType",
+          "description": "Code indicating the kind of restriction associated to a flight speed ATC clearanceLimitation CCS: the following values are not handled: DUAL_ASSIGNED, DUAL_MAXIMUM, DUAL_MINIMUM, KEYWORD, NONE.Only the following values are applicable to the speedConstraint: ASSIGNED, MAXIMUM, MINIMUM, RANGE.Only the following values are applicable to the speed ATC instruction: ASSIGNED, MAXIMUM, MINIMUM.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeTrafficCategoryType",
+          "description": "Enumeration list to indicate if the attribute is GAT, OAT or MIXED:- GAT: General Air Traffic- OAT: Operational Air Traffic- MIXED: GAT\/OAT mixed flight.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeTrajectoryPointKindExtensionType",
+          "description": "Extension to characterize with additional information a point of the trajectory.BYPASSED_WAYPOINT: A trajectory point corresponding to a waypoint that is not overflown.TRACK_PROJECTION: A trajectory point corresponding to a position of a former projection of the track on the trajectory.INTRA_RESPONSIBILITY_TRANSITION: transition point between responsibilities sharing the same control volumes. The transition points are computed from the responsibility rule (offline defined) that identifies these responsibilities. The system has to know at least all responsibility rules of the region and those for responsibilities surrounding the region.DISCONTINUITY_POINT: A trajectory point corresponding to a trajectory calculation guess possibly due to issue(s) in the expanded route (for example used to handle re-entrant flights).TARGET_START_POINT: Start of the trajectory segment within a constraint scope where the constrained value has to be metTARGET_END_POINT: End of the trajectory segment within a constraint scope where the constrained value has to be metAIRWAY: A trajectory point corresponding to an airway waypoint (caveat: entry\/exit points of airways are not considered as airway points)CDR: A trajectory point corresponding to the first point of a CDRMISSED_APPROACH: A trajectory point corresponding to a missed approach waypointIAP: A trajectory point corresponding to an IAP waypointSID: A trajectory point corresponding to a SID waypointSTAR: A trajectory point corresponding to a STAR waypoint",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeTrajectoryPointKindType",
+          "description": "Characterizes a point of the trajectory. ADEP: An estimated trajectory point belonging to the adep.ADES: An estimated trajectory point belonging to the ades.BOTTOM_OF_CLIMB: A trajectory point marking the transition from a cruise phase to a climb phase (kind not provided by CCS).BOTTOM_OF_DESCENT: A trajectory point marking the transition from a descent phase to a cruise phase (kind not provided by CCS).BOUNDARY_POINT: A trajectory point at which the 4D Trajectory intersects the boundary of an airspace.CONSTRAINT_APPLICATION: The point of application of a constraint.END_OF_TURN: A trajectory point corresponding to the end of a turn (kind not provided by CCS).END_PREDICTION_POINT: The final point at which a trajectory was made calculated.FROM_GAT_TO_OAT_POINT: A trajectory point at which the flight passes from GAT to OAT rules, indicating the start of a military portion of the route.FROM_IFR_TO_VFR_POINT: A trajectory point at which the flight passes from IFR to VFR rules, indicating the start of a VFR portion of the route.FROM_OAT_TO_GAT_POINT: A trajectory point at which the flight passes from OAT to GAT rules, indicating the end of a military portion of the route.FROM_VFR_TO_IFR_POINT: A trajectory point at which the flight passes from VFR to IFR rules, indicating the end of VFR portion of the route.HOLD_ENTRY_POINT: The point is the entry to a discontinuity area due to holding (STACK\/AMA), STAY or En-route delay.HOLD_EXIT_POINT: The point at which the flight is expected to exit from planned holding.INITIAL_PREDICTION_POINT: The initial point at which a trajectory was calculated. INTERMEDIATE_POINT: A specific kind of point of the trajectory that represents no significant point, only a point that will be overflown (no distinction between horizontal and vertical intermediate points in SESAR).MIDDLE_OF_TURN: A trajectory point corresponding to a middle of a turn (kind not provided by CCS).ROUTE: A trajectory point corresponding to an expanded route point overfly.START_OF_TURN: A trajectory point corresponding to a start of a turn (kind not provided by CCS).TOP_OF_CLIMB: The trajectory point at which the trajectory arrives at the cruise flight level. TOP_OF_DESCENT: The trajectory point at which the trajectory begins a descent from the cruise flight level.Note: CCS only manages one TOP_OF_CLIMB and one TOP_OF_DESCENT. When the flight has several cruise levels (intermediate RFL\/ECL inputs):  - the TOP_OF_CLIMB is at the highest level reached by the trajectory before a change of trend.  - the TOP_OF_DESCENT is where the trajectory leaves the level preceding a descent without a re-climb.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeTransitionStatusType",
+          "description": "This indicates the state of a transition in the coordination phase to know if the relative data are applicable :- APPLICABLE: the transition data are applicable as coordination constraint (if any).- DELEG: the upstream responsibility has delegated the control of the flight to the one now placed as downstream, so the related coordination data are not applicable.- SAME_LP: the two responsibilities of the transition are mapped on the same LogicalCWP, so the related coordination data are not applicable.- SKIPPED: the downstream responsibility has sent a skip input and the upstream gets the control of the flight, so the related coordination data are not applicable.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeUpdateCategoryType",
+          "description": "Enumeration to identify the category of the SFPL modification:-DAD_TIMER_UPD: automatic programmed event by DAD-ENV_UPDATE: ENV data update-FDM_TIMER_UPD: automatic programmed event by FDM-GGDC_EXCHANGE_FAILURE: The update is due to a message not sent or no message acknowledgement reception processing-IOP_UPDATE: input following the reception of an IOP exchange-MANUAL_UPDATE: manual input from an eligible operator-MSG_UPDATE: reception of an external message (IFPS, AFTN, OLDI...)-PRO_TIMER_UPD: automatic programmed event by PRO-RADAR_UPDATE: Automatic positioning report, or correlation eventSSR_TIMER_UPD: Automatic programmed event by SSRM",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeVFRFlightPlanStatusType",
+          "description": "This indicates the state of a flight plan of a VFR flight:- ALERTED: the INCERFA indicator is set for a routePointId (eq. ATO delay is out of bounds on this point).- SUPERVISED: the INCERFA indicator is not set.",
+          "airmConformant": false
+        },
+        {
+          "name": "CodeWakeTurbulenceCategoryType",
+          "description": "Enumeration indicating the wake turbulence category of an aircraft",
+          "airmConformant": false
+        },
+        {
+          "name": "CollectionStampType",
+          "description": "The value of the collection stamp.",
+          "airmConformant": false
+        },
+        {
+          "name": "CommentLongType",
+          "description": "Generic type to address comment\/description\/remark attributes within a long length frame.",
+          "airmConformant": false
+        },
+        {
+          "name": "CommentMediumType",
+          "description": "Generic type to address comment\/description\/remark attributes within a medium length frame",
+          "airmConformant": false
+        },
+        {
+          "name": "CommentShortType",
+          "description": "Generic type to address comment\/description\/remark attributes within a short length frame.",
+          "airmConformant": false
+        },
+        {
+          "name": "ConstraintIdType",
+          "description": "The unique and static identifier of the constraint",
+          "airmConformant": false
+        },
+        {
+          "name": "Controller",
+          "description": "Identification of a specific controller (originator of a request, served for SFPL distribution, target\/originator of a PointSession...).",
+          "airmConformant": false
+        },
+        {
+          "name": "ControllerDesignatorType",
+          "description": "String to identify a controller.",
+          "airmConformant": false
+        },
+        {
+          "name": "DatalinkLogonData",
+          "description": "Common Technical classData link ATN or FANS 1\/A logon parameters.Note: When an aircraft did not indicate that it wants to use one of the applications, the associated AppVersion is set to \"00\" and the associated application address field is omitted in the LOF.",
+          "airmConformant": false
+        },
+        {
+          "name": "DateImageType",
+          "description": "Date, expressed in string (\"YYMMDD\")",
+          "airmConformant": false
+        },
+        {
+          "name": "DirectionIndicator",
+          "description": "Indicates the direction of the coordination proposal.The CoordinationData of real SFPL are always from the entry to the exit sector.",
+          "airmConformant": false
+        },
+        {
+          "name": "DistributionKindType",
+          "description": "The Kind of the distribution:CONTROL: The SFPL is distributed for control purpose (depending on the control volumes offline pre-defined as a set responsibility rules).CONSULTATION: The SFPL is distributed for consultation purpose in a given what-if context, and the served controller is not the creator of this what-if context.CONSULTATION_CREATOR: The SFPL is distributed for consultation purpose in a given what-if context, and the served controller is the creator of this what-if context.DUPLICATED: The SFPL is distributed for duplication purpose. It may be an external duplication or a duplication from an IOP partners.GENERAL_INFORMATION: The SFPL is distributed for general information purpose (depending on the values of the SFPL data).POINTED: The SFPL is distributed due to a point flight sessionVICINITY: The SFPL is distributed for information in case of vicinity (depending on the interest volumes offline pre-defined as a set of information rules).Note: the distribution rules must have been offline pre-defined for each kind of distribution.",
+          "airmConformant": false
+        },
+        {
+          "name": "EmergencyDataType",
+          "description": "This type indicates whether emergency is DECLARED or NOT_DECLARED).-NOT_DECLARED (default value)-DECLARED: when special SSR Code = 7700.",
+          "airmConformant": false
+        },
+        {
+          "name": "Equipment",
+          "description": "A term designating any electronic device - including its electrical part - for use in an aircraft, including radio, automatic flight control and instrument systems.",
+          "airmConformant": false
+        },
+        {
+          "name": "ErroneousMessageIdType",
+          "description": "Number indicating the Erroneous message identifier in the queue",
+          "airmConformant": false
+        },
+        {
+          "name": "ErrorDescriptionType",
+          "description": "Generic type to address the description of an error in a FDO referred message.",
+          "airmConformant": false
+        },
+        {
+          "name": "ErrorIdentifierType",
+          "description": "Identifier of the error.",
+          "airmConformant": false
+        },
+        {
+          "name": "ErrorParameterType",
+          "description": "A string supporting the value of a parameter in an error description.",
+          "airmConformant": false
+        },
+        {
+          "name": "ErrorPositionType",
+          "description": "The position (Nth character) of the error.",
+          "airmConformant": false
+        },
+        {
+          "name": "FillingTimeImageType",
+          "description": "Type supporting a date, expressed in string (\"DDHHMM\")",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightIdentifier",
+          "description": "Flight Identifier",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightIdentifierType",
+          "description": "Type supporting a unique flight identifier that can be : an internal flight Id assigned by the FDPS, an IFPLIdentifier, an aircraftRegistration, a flightNumber...",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightLevelOrAltitude",
+          "description": "Level value expressed in Flight Level or in altitude.",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightLevelType",
+          "description": "The flight level to climb\/descend to.",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightLevelValue",
+          "description": "Simple class providing an FL value.",
+          "airmConformant": false
+        },
+        {
+          "name": "FrequencyValueType",
+          "description": "Value of the frequency expressed in MHz  ",
+          "airmConformant": false
+        },
+        {
+          "name": "GeographicalPoint",
+          "description": "Geographical Point definition of a Significant Point.",
+          "airmConformant": false
+        },
+        {
+          "name": "HeadingClearanceRestrictionKind",
+          "description": "Gives information about the application of the flight heading clearance",
+          "airmConformant": false
+        },
+        {
+          "name": "HeadingType",
+          "description": "Heading type angle in degrees.",
+          "airmConformant": false
+        },
+        {
+          "name": "HoldingVolumeIdentifierType",
+          "description": "Holding Identifier in which the flight must be hold.",
+          "airmConformant": false
+        },
+        {
+          "name": "ICAOCodeType",
+          "description": "24-bit address unequivocally identifying an aircraft and assigned by the State where an aircraft is registered in accordance with standards established by ICAO for Mode S transponders.",
+          "airmConformant": false
+        },
+        {
+          "name": "ICAORouteType",
+          "description": "A string of points (and connecting airways or DCTs where applicable) describing an ATS route or path of xes no more than 30 minutes ying time or 200nm apart, including those points where a change of speed, level, track, or flight rules is planned. Points can be listed by their coded designator (i.e. LN, MAY, HADDY), a 7 or 11-character representation of their coordinates (i.e. 46N078W, 4620N07805W), or a point relative to a reference point based on bearing and distance (i.e. DUB190040 being 40nm out on the 190 degree magnetic bearing from DUB). Change of speed and\/or level is indicated by appending data formatted as in 15 CRUISING SPEED and LEVEL to a point, after a slash (i.e. MAY\/N0305F180, 46N078W\/M082F330). Change of flight rules are shown by a standalone VFR or IFR to indicate the beginning of that phase of flight.",
+          "airmConformant": false
+        },
+        {
+          "name": "IFPLIdentifierType",
+          "description": "Type supporting an IFPLIdentifier.Represents the IFPS allocated unique identifier received from the NM-IFPS (expressed as a string of a fixed number of alphanumeric that consists of 2 letters followed by 8 digits).",
+          "airmConformant": false
+        },
+        {
+          "name": "IndicatedAirSpeed",
+          "description": "Simple class providing an IAS value.",
+          "airmConformant": false
+        },
+        {
+          "name": "LatitudeType",
+          "description": "Latitude expressed in decimal degrees ",
+          "airmConformant": false
+        },
+        {
+          "name": "LevelClearanceRestrictionKind",
+          "description": "Type of restriction.Gives information about the application of the level clearance",
+          "airmConformant": false
+        },
+        {
+          "name": "LongitudeType",
+          "description": "Longitude expressed in decimal degrees",
+          "airmConformant": false
+        },
+        {
+          "name": "MachNumber",
+          "description": "Simple class providing a mach value.",
+          "airmConformant": false
+        },
+        {
+          "name": "MessageIdType",
+          "description": "Generic type to address the logical AFTN message type.",
+          "airmConformant": false
+        },
+        {
+          "name": "MessageTextType",
+          "description": "Generic string type to address a raw message or the content of a long text field (otherInformation, specificADEXPField...).",
+          "airmConformant": false
+        },
+        {
+          "name": "NCAEquipment",
+          "description": "Navigation, radio communication and approach aid equipment.  ",
+          "airmConformant": false
+        },
+        {
+          "name": "NumberOfAircraftType",
+          "description": "The number of aircrafts (greater than 1 in case of formation flights).",
+          "airmConformant": false
+        },
+        {
+          "name": "OriginalEventType",
+          "description": "The event code at the origin of the last update.",
+          "airmConformant": false
+        },
+        {
+          "name": "OtherOEExtension",
+          "description": "Other operational entity mapped on the originator working position.Note: Even if the originator is a single controller, he may belong to a logical position composed of several operational entities (several Role\/Responsibility couples). ",
+          "airmConformant": false
+        },
+        {
+          "name": "PointSessionIdType",
+          "description": "Integer to identify a PointSession.",
+          "airmConformant": false
+        },
+        {
+          "name": "Position2D",
+          "description": "Two-dimensional point expressed in latitude and longitude.",
+          "airmConformant": false
+        },
+        {
+          "name": "Position3D",
+          "description": "Three-dimensional point expressed in latitude, longitude and altitude.",
+          "airmConformant": false
+        },
+        {
+          "name": "Position4D",
+          "description": "Four-dimensional point expressed in latitude, longitude, altitude and time.",
+          "airmConformant": false
+        },
+        {
+          "name": "ProcedureIdentifierType",
+          "description": "Designator of a procedure",
+          "airmConformant": false
+        },
+        {
+          "name": "PublishedPoint",
+          "description": "Published Point definition of a Significant Point.",
+          "airmConformant": false
+        },
+        {
+          "name": "ROCDType",
+          "description": "Rate of Climb or Decent, respectively + or -.Expressed in Feet\/Minute",
+          "airmConformant": false
+        },
+        {
+          "name": "RadialPoint",
+          "description": "Radial Point definition of a Significant Point.",
+          "airmConformant": false
+        },
+        {
+          "name": "ReasonType",
+          "description": "Express the reason of distribution ",
+          "airmConformant": false
+        },
+        {
+          "name": "ResponsibilityType",
+          "description": "String to identify a Responsibility.",
+          "airmConformant": false
+        },
+        {
+          "name": "RouteElement",
+          "description": "A route element may be either an airway or (exclusive) a published point name.Upstream or downstream truncation of an airway to be used is to be made in conjunction with a previous or next RouteElement providing the corresponding point name.",
+          "airmConformant": false
+        },
+        {
+          "name": "RoutePointIdType",
+          "description": "String identifying a route point.This is the identifier of an expanded route point.",
+          "airmConformant": false
+        },
+        {
+          "name": "RunwayDesignatorType",
+          "description": "The full textual designator of the runway, used to uniquely identify it at an aerodrome\/heliport",
+          "airmConformant": false
+        },
+        {
+          "name": "SSRCodeType",
+          "description": "Mode A\/S value of the transponder.4-digit octal representation ",
+          "airmConformant": false
+        },
+        {
+          "name": "SectorListIdType",
+          "description": "System reference number to identify the Sector by pointing to its position in the list of controlSector",
+          "airmConformant": false
+        },
+        {
+          "name": "SegmentDesignatorType",
+          "description": "String to identify a segment ",
+          "airmConformant": false
+        },
+        {
+          "name": "SignificantPoint",
+          "description": "A specified geographical location used in defining an ATS route or the flight path of an aircraft and for other navigation and ATS purposes.A SignificantPoint can be defined as a PublishedPoint, a GeographicalPoint or a RadialPoint.",
+          "airmConformant": false
+        },
+        {
+          "name": "SignificantPointDesignatorType",
+          "description": "Name of a significant point.Note: ICAO norm maximum length is 5 characters.",
+          "airmConformant": false
+        },
+        {
+          "name": "SpeedClearanceRestrictionKind",
+          "description": "Gives information about the application of the flight speed clearanceNote: only applicable to CCS FDD, not to CCS FDM.",
+          "airmConformant": false
+        },
+        {
+          "name": "SpeedKtsType",
+          "description": "A speed value, expressed in knot.",
+          "airmConformant": false
+        },
+        {
+          "name": "SurveillanceCapabilityType",
+          "description": "A string indicating the SSR and ADS capability of the aircraft.",
+          "airmConformant": false
+        },
+        {
+          "name": "TechStampType",
+          "description": "The version number of an item.",
+          "airmConformant": false
+        },
+        {
+          "name": "TerminalRouteType",
+          "description": "SID or STAR designator",
+          "airmConformant": false
+        },
+        {
+          "name": "TimeDateType",
+          "description": "Number of seconds since the Unix epoch time - 00.00 hours - Jan, 1st, 1970 (UTC).",
+          "airmConformant": false
+        },
+        {
+          "name": "TimeDayType",
+          "description": "Number of seconds since beginning of current day (UTC)",
+          "airmConformant": false
+        },
+        {
+          "name": "TimeDurationMinuteType",
+          "description": "Duration or interval in minutes. Decimal part may be used to refine precision with additional seconds.It may be negative when representing a time to lose. ",
+          "airmConformant": false
+        },
+        {
+          "name": "TimeImageType",
+          "description": "Time expressed in HHMM",
+          "airmConformant": false
+        },
+        {
+          "name": "TimeStampDateType",
+          "description": "Number of milliseconds since the Unix epoch time - 00.00 hours - Jan, 1st, 1970 (UTC).",
+          "airmConformant": false
+        },
+        {
+          "name": "TrajectoryPointIdType",
+          "description": "Index identifying the trajectory point in string format.",
+          "airmConformant": false
+        },
+        {
+          "name": "UnitDesignatorType",
+          "description": "A distinguishing label, term, abbreviation or acronym used to identify the Unit.",
+          "airmConformant": false
+        },
+        {
+          "name": "WhatIf",
+          "description": "WhatIf class is used in the FlightDataDistribution service to indicate if the published FlightData is a copy of the real flight used to negotiate potential changes without affecting the corresponding data of the actual flight. The WhaIf is used in the following operations of CoordinationAndTransferManagement:coordinationAccept, coordinationRejection, coordinationCounterProposal.The WhaIf is used in the following probing operations of FlightDataManagement:- requestProcessCFL- requestProcessDirect- requestProcessECL- requestProcessEFL- requestProcessHeading- requestProcessHolding- requestProcessRFL- requestProcessROCD- requestProcessRoute (CCS limitation)- requestProcessXFL ",
+          "airmConformant": false
+        },
+        {
+          "name": "WhatIfContextIDType",
+          "description": "Unique identifier of a what-if context in the CCS system.",
+          "airmConformant": false
+        },
+        {
+          "name": "AFTNMessageData",
+          "description": "Class supporting the generic data of AFTN messages.",
+          "airmConformant": false
+        },
+        {
+          "name": "ATCInstruction",
+          "description": "Directives issued by air traffic control for the purpose of requiring a pilot to take a specific action.",
+          "airmConformant": false
+        },
+        {
+          "name": "Aircraft",
+          "description": "Any machine that can derive support in the atmosphere from the reactions of the air other than the reactions of the air against the earth's surface.",
+          "airmConformant": false
+        },
+        {
+          "name": "AlternativeDestinationAerodrome",
+          "description": "The indicator of the alternative arrival aerodrome for the flight",
+          "airmConformant": false
+        },
+        {
+          "name": "Arrival",
+          "description": "The set of flight operations following procedures associated to the destination aerodrome.",
+          "airmConformant": false
+        },
+        {
+          "name": "BasicFlightPlanInfo",
+          "description": "This class represents some Basic FP Information relevant for some FlightDataManagement operations.",
+          "airmConformant": false
+        },
+        {
+          "name": "COPData",
+          "description": "Coordination point data.",
+          "airmConformant": false
+        },
+        {
+          "name": "ClearedFlightLevel",
+          "description": "To process the input of a Cleared Flight Level given a FP identification and the value of the level.",
+          "airmConformant": false
+        },
+        {
+          "name": "ClearedROCD",
+          "description": "Cleared information related to a ROCD",
+          "airmConformant": false
+        },
+        {
+          "name": "ClearedTo",
+          "description": "Instruction to proceed via the specified route.",
+          "airmConformant": false
+        },
+        {
+          "name": "Constraint",
+          "description": "ATC constraint characterizing the impact of any input, flight intent or ATM restriction, on the trajectory of flight. This includes ATC Tactical constraints, i.e. constraints issued by controller inputs corresponding to instructions actually given or instructions planned to be given to the pilot.",
+          "airmConformant": false
+        },
+        {
+          "name": "ConstraintIdentifierExtension",
+          "description": "The unique and static identifier of the constraint.",
+          "airmConformant": false
+        },
+        {
+          "name": "ControlData",
+          "description": "This class provides relevant information of the control of the flight. ",
+          "airmConformant": false
+        },
+        {
+          "name": "ControlSector",
+          "description": "Is a type of Sector whose volume (or other airspace element if defined for the Sector) and assigned responsibility meets the characteristics of the flight.The group of all the ControlSectors is referred as the list of Control Sectors denoted by the multiplicity of this class.",
+          "airmConformant": false
+        },
+        {
+          "name": "CoordinationAndTransfer",
+          "description": "This class supports a coordination and transfer process as a change of the controlling Sector and gathers all the data relevant for the Sectors involved in the process (CoordinationData, TransferData, transition data, Dialogue...).ControlSectors and InformedSectors can be involved in a coordination and transfer process as receiving or transferring Sectors.The model supports Coordination And Transfer processes between Sectors that are partOf the same Unit (internal coordination) or partOf different Units (external coordination).",
+          "airmConformant": false
+        },
+        {
+          "name": "CoordinationData",
+          "description": "Data on the transition point between two sectors of the same ATC unit or from adjacent units.Note: by default, the transition point is the entry point of the receiving sector (responsibility). The entry of an AoR is determined either by the entry of the control volume, a segment transition point (if the 2 sectors belong to different segments), or according to the pre-defined responsibility rules if more than one responsibility is determined from a control volume.",
+          "airmConformant": false
+        },
+        {
+          "name": "DatalinkIndicators",
+          "description": "Technical classThe datalink indicators for an ATSU.",
+          "airmConformant": false
+        },
+        {
+          "name": "Departure",
+          "description": "The phase of a flight which starts with the ground handling of the aircraft and ends with the takeoff of the aircraft.",
+          "airmConformant": false
+        },
+        {
+          "name": "Dialogue",
+          "description": "Specific information related to the exchange of coordination and transfer messages.",
+          "airmConformant": false
+        },
+        {
+          "name": "EmergencyData",
+          "description": "A generic term meaning, as the case may be, uncertainty phase, alert phase or distress phase.",
+          "airmConformant": false
+        },
+        {
+          "name": "ErroneousAFTNMessage",
+          "description": "Erroneous AFTN message.",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightData",
+          "description": "Class comprising all the Flight Data required for a flight to be distributed to CWPs (not constraining its use) supporting ATS operations.",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightDataInfo",
+          "description": "Specified information provided to air traffic services units, relative to an intended flight or portion of a flight of an aircraft.",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightDataMessage",
+          "description": "Message definition for Flight Data",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightDataMessages",
+          "description": "Message definition for Flight Data",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightHeading",
+          "description": "Instruction to fly on the specified heading.",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightPlanInfo",
+          "description": "Class used to gather the input parameters of some FlightDataManagement operations. It extends BasicFlightPlanInfo class, whose data is also used by the operations requiring FlightPlanInfo attributes as input parameters.",
+          "airmConformant": false
+        },
+        {
+          "name": "FlightSpeed",
+          "description": "Manual Assigned Speed Input: Assign speed instruction.The parameters assignedSpeed, maximumSpeed and minimumSpeed are mutually exclusive.Note: the controller cannot input a speed range (min and max at the same time).",
+          "airmConformant": false
+        },
+        {
+          "name": "HeadingConstraintExtension",
+          "description": "A heading constraint given to the flight. The aircraft will leave its route taking a given heading.",
+          "airmConformant": false
+        },
+        {
+          "name": "Holding",
+          "description": "Instruction to enter a holding pattern with the published characteristics at the specified position and level.Note: instruction not applicable to coordination or transfer proposal in PJ16.",
+          "airmConformant": false
+        },
+        {
+          "name": "HoldingVolume",
+          "description": "Data that contains all HOLD crossing areas",
+          "airmConformant": false
+        },
+        {
+          "name": "InformedSector",
+          "description": "Is a type of Sector whose volume is of interest. This InformedSector list is populated with the AOI responsibilities crossed by the SFPL and satisfying specified SFPL conditions. The InformedSector list is determined by application of off-line defined information rules. Examples of informations rules criteria: interest volume, SFPL criteria (ADEP, ADES...), SFPL segment criteria (flight rule, flight type...) The group of all the InformedSectors is referred as the list of Informed Sectors denoted by the multiplicity of this class.",
+          "airmConformant": false
+        },
+        {
+          "name": "InstrumentApproachProcedure",
+          "description": "A series of predetermined manoeuvres by reference to flight instruments or it may also be an extended list of points for the STAR or SID.",
+          "airmConformant": false
+        },
+        {
+          "name": "LevelConstraintExtension",
+          "description": "A constraint defined by an objective to set the cleared flight level for the flight.",
+          "airmConformant": false
+        },
+        {
+          "name": "ListOE",
+          "description": "Technical ClassRequest message for the CCS getFlightData operation.",
+          "airmConformant": false
+        },
+        {
+          "name": "OceanicClearanceData",
+          "description": "The information associated with an oceanic clearance.",
+          "airmConformant": false
+        },
+        {
+          "name": "OnGoingCommunications",
+          "description": "Represents the Sectors\/Units (actors) involved in the on-going radio communications supporting the  Transfer process. These actors may differ from the  Transfer Sectors\/Units transferring or receiving the Flight.NOTE: There can only be one on-going radio communication at the same time for the same flight whereas there could be several  Transfer on-going Dialogues for the same flight.",
+          "airmConformant": false
+        },
+        {
+          "name": "PointSession",
+          "description": "This class is provided when a point session is established. A pointSession is used to mark an specific flight in order to highlight it in other HMIs, such internal or external to the ATSU",
+          "airmConformant": false
+        },
+        {
+          "name": "ProceedDirectTo",
+          "description": "Instruction to proceed directly to the specified position",
+          "airmConformant": false
+        },
+        {
+          "name": "ProposedCoordinationData",
+          "description": "This class supports the proposal or counter-proposal data that can take place in a negotiation during a coordination phase.Several proposals may exist during the negotiation of the coordination data.",
+          "airmConformant": false
+        },
+        {
+          "name": "ROCDInstructions",
+          "description": "The flight's cleared rate of climb or rate of descend.The assignedROCD, maximumROCD and minimumROCD are mutually exclusive.Note: the controller cannot input an ROCD range (min and max at the same time).",
+          "airmConformant": false
+        },
+        {
+          "name": "Route",
+          "description": "This is the expanded route: the ordered list of route points  resulting from route expansion (including items from standard procedures and route across points).Note: the route across points are filled with the coordinates of the route point (not with the coordinates of the projected point, the coordinates of the projection are available in the trajectory).",
+          "airmConformant": false
+        },
+        {
+          "name": "RoutePoint",
+          "description": "A specified geographical location used in defining an ATS route or the flight path of an aircraft and for other navigation and ATS purposes",
+          "airmConformant": false
+        },
+        {
+          "name": "SSRCode",
+          "description": "The number assigned to a particular multiple pulse reply signal transmitted by a transponder in Mode A or Mode C.",
+          "airmConformant": false
+        },
+        {
+          "name": "Sector",
+          "description": "The Area of Responsibility of a Unit is internally represented by a group of Sectors. They are the smallest entities that can be assigned to a controller or a group of controllers for ATM purposes.A Sector could be first defined by a volume or other airspace element such as STAR, an airway or a group of airways and has a responsibility assigned for controlling purposes. The responsibility can depend on several criteria:- Type of airspace controlled (ACC, APP,...)- Type of traffic.- Type of aircraft.- etc.Sectors shall be either ControlSectors or InformedSectors and are linked to the Unit they are partOf to support external coordination.",
+          "airmConformant": false
+        },
+        {
+          "name": "Segment",
+          "description": "Internal or external segment.Internal segment: Traversal of an ATSU AoR by an SFPL, for one flight rule (IFR\/VFR) and one flight type (OAT\/GAT) applicable in the traversal.External segment: Traversal of an ATSU AoI by an SFPL that does not enter the AoR, for one flight rule (IFR\/VFR) and one flight type (OAT\/GAT) applicable in the traversal.",
+          "airmConformant": false
+        },
+        {
+          "name": "SegmentIdentifier",
+          "description": "Unique and fixed identifier of the segment.",
+          "airmConformant": false
+        },
+        {
+          "name": "ServedController",
+          "description": "The list of the controllers served for any purpose (control, vicinity, general information, duplication or point), with the reason of distribution.Note: the distribution rules must have been offline pre-defined for each kind of distribution.",
+          "airmConformant": false
+        },
+        {
+          "name": "SpeedConstraintExtension",
+          "description": "A speed constraint.It can be a speed to be used by the aircraft (at speed), a minimum speed (above speed) or a maximum speed (below speed).",
+          "airmConformant": false
+        },
+        {
+          "name": "Trajectory",
+          "description": "The description of movement of an aircraft both in the air and on the ground including position, time, and at least via calculation, speed and acceleration.Note: the trajectory includes the projected points of route across points (BYPASSED_WAYPOINT).",
+          "airmConformant": false
+        },
+        {
+          "name": "TrajectoryPoint",
+          "description": "A four dimensional point used in defining the flight path of an aircraft.",
+          "airmConformant": false
+        },
+        {
+          "name": "TrajectoryPointKind",
+          "description": "Characterizes a point of the trajectory.",
+          "airmConformant": false
+        },
+        {
+          "name": "TrajectoryPointKindExtension",
+          "description": "Extension to characterize with additional information a point of the trajectory.",
+          "airmConformant": false
+        },
+        {
+          "name": "TransferData",
+          "description": "Transfer data that can be exchanged or proposed during the transfer phase:- A speed - A rate of climb \/ descent - A heading- A flight level - A direct,- A supplementary flight level.",
+          "airmConformant": false
+        },
+        {
+          "name": "UpdateReason",
+          "description": "Technical classThe reason that led to an SFPL modification.",
+          "airmConformant": false
+        },
+        {
+          "name": "Warning",
+          "description": "Coordination warning dataNote: due to late PJ16.03 definition, calculatedXFL and calculatedSector are not provided in this CCS version.",
+          "airmConformant": false
+        },
+        {
+          "name": "WhatIf",
+          "description": "WhatIf class is used in the FlightDataDistribution service to indicate if the published FlightData is a copy of the real flight used to negotiate potential changes without affecting the corresponding data of the actual flight. The WhaIf is used in the following operations of CoordinationAndTransferManagement:coordinationAccept, coordinationRejection, coordinationCounterProposal.The WhaIf is used in the following probing operations of FlightDataManagement:- requestProcessCFL- requestProcessDirect- requestProcessECL- requestProcessEFL- requestProcessHeading- requestProcessHolding- requestProcessRFL- requestProcessROCD- requestProcessRoute (CCS limitation)- requestProcessXFL ",
+          "airmConformant": false
+        }
+      ]
+    },
+    "serviceTechnicalDescription": {
+      "serviceMonitoring": {
+        "monitoringDescription": "CCS services are supervised in real time by trained and licensed ATSEPS. A dedicated service to supervise the complete CCS swim services portfolio is available to the customer.For more information, please refer to the swim service description of the CCS technical supervision distribution service"
+      },
+      "securityMechanism": [
+        {
+          "name": "Mutual authentication with X509 certificates",
+          "description": "Mutual authentication with X509 certificates is used between the AMQP broker and its client established within a TLS session",
+          "type": [
+            "AUTHENTICATION"
+          ]
+        },
+        {
+          "name": "TLS 1.2",
+          "description": "TLS 1.2 is used to provide confidentiality and integrity at transport layer.",
+          "type": [
+            "INTEGRITY"
+          ]
+        },
+        {
+          "name": "IPsec v4",
+          "description": "IPsec is used to provide confidentiality, authentication and integrity at network (internet) layer",
+          "type": [
+            "INTEGRITY"
+          ]
+        }
+      ],
+      "technicalConstraint": [
+        {
+          "name": "1",
+          "description": "CCS provider and CCS customer use the date and time for the operation of each service and they must be able to date the traces and the information passed to the SSI log collector. NTP is the standard solution to synchronize time accurately. So, CCS Provider and CCS Customer should use, each of them, at least one NTP server (stratum N), integrated in a NTP network containing a stratum 0 reference time clock."
+        },
+        {
+          "name": "2",
+          "description": "Each services interface of the CCS business services relies on the concept of AMQP queues and topics. -The CCS customer shall use an implementation of the AMQP 1.0 specification to connect to the CCS provider AMQP 1.0 endpoint. -The CCS provider endpoint is an AMQP 1.0 broker managing queue and topics. The message payloads are encoded following a protobuf format. The message exchange patterns used by the CCS services are request\/reply and publish\/subscribe. The CCS customer acts as requester and subscriber. The CCS provider acts as responder and publisher.Concerning publish-subscribe, the CCS customer subscribes to a CCS distribution service by directly listening to an appropriate AMQP topic, which name follows the CCS derivation rules.The subscription to CCS Distribution Services is not performed via subscription operations, but by connecting to the appropriate AMQP Topic described in the .protobuf files as topic:\/\/<NameSpaceName>.<ServiceInterfaceName>.<LogicalOperation>The subscribers can filter the messages they want to receive by using the filter parameters defined for each subscription operation.Please note that, after subscribing to a CCS Distribution Service, the current repository of messages needs to be obtained from CCS via the get<MessageRepository> operation defined for each CCS Distribution Service(see \"Subscription\" section of the distribution operation of the service).N.B:-If the CCS platform restarts while the Customer is connected to the AMQP Broker, the current repository of messages is published again.-The acknowledgement that a Customer receives to his request (\"RequestReport\") may be received after the data distribution that this request has triggered, as these two messages are managed asynchronously by AMQP Queues and Topics.-More generally, since the distribution events from different services are asynchronous (independent CORRD\/FDD... topics), they may be received in an unexpected sequence during a short time (a few ms) before reaching consistency.Concerning request-reply the CCS customer sends a request by sending a message to an appropriate AMQP queue, which name follows the CCS derivation rules, to make a request. The request message contains the name of the queue into the CCS customer listens and in which the reply from the CCS provider is expected."
+        },
+        {
+          "name": "3",
+          "description": "The Customer is the one that initiates the TCP connection and in case of a Network \/ Connection failure, it is the responsibility of the CCS customer to try to reconnect regularly."
+        },
+        {
+          "name": "4",
+          "description": "The AMQP broker creates the physical resources associated with a destination (queue, topic) on demand when messages are actually sent to them.Permissions on queues and topics (read\/write access) are granted based on intended usage. The CCS customer will have: -Write access on the request queue-Read access on the reply queue -Read access on the topic for distribution service"
+        }
+      ]
+    },
+    "serviceInterface": [
+      {
+        "name": "FlightDataDistributionProvider",
+        "description": "<p>This Service Interface exposes the technical operation that allows the consumer to get the current flight plan data of all flights on request. It is typically used when starting the Service, for initialisation.<\/p>",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "SYNCHRONOUS_REQUEST_RESPONSE",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_SECURE_UNICAST",
+        "interfaceBindingDescription": "Information is exchanged in Protobuf format. Protocol buffers or Protobuf are Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data similar to XML, but smaller, faster, and simpler. ",
+        "operation": [
+          {
+            "name": "getFlightData",
+            "description": "Allows a consumer to get the applicable flight plan data related to all relevant flights concerning this consumer.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "SYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              "transfer"
+            ],
+            "operationMessage": [
+              {
+                "name": "ListOE",
+                "description": "Technical ClassRequest message for the CCS getFlightData operation.",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "FlightDataMessages",
+                "description": "Message definition for Flight Data",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "Service behaviour",
+            "description": "The detailed behavior of the service is provided in each operation dedicated section"
+          }
+        ],
+        "endPoint": [
+          {
+            "name": "FlightDataDistributionProvider",
+            "description": "",
+            "address": "For security reasons, the adresses will be communicated only to Customers",
+            "addressableResource": [
+              {
+                "name": "queue:\/\/ccs.protobuf.flightDataDistribution.FlightDataDistributionProvider.getFlightData",
+                "description": "",
+                "type": "QUEUE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "FlightDataSubscriber",
+        "description": "<p>This Service Interface exposes one operation for publishing updates of flight plan data on a specific flight immediately when updated.<\/p>",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "FIRE_AND_FORGET",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_SECURE_UNICAST",
+        "interfaceBindingDescription": "Information is exchanged in Protobuf format. Protocol buffers or Protobuf are Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data similar to XML, but smaller, faster, and simpler. ",
+        "operation": [
+          {
+            "name": "publishFlightDataDistribution",
+            "description": "This operation sends the flight plan data of a flight when it is updated.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "",
+            "tiProtocolMethod": [
+              "transfer"
+            ],
+            "operationMessage": [
+              {
+                "name": "FlightDataMessage",
+                "description": "Message definition for Flight Data",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "void",
+                "description": "Predefined void",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "Service behaviour",
+            "description": "The detailed behavior of the service is provided in each operation dedicated section"
+          }
+        ],
+        "endPoint": [
+          {
+            "name": "FlightDataSubscriber",
+            "description": "",
+            "address": "For security reasons, the adresses will be communicated only to Customers",
+            "addressableResource": [
+              {
+                "name": "topic:\/\/ccs.protobuf.flightDataDistribution.FlightDataSubscriber.publishFlightDataDistribution",
+                "description": "",
+                "type": "TOPIC"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ErroneousFlightDataSubscriber",
+        "description": "<p>This Service Interface exposes one operation for publishing the erroneous AFTN message information for FDO correction.<\/p>",
+        "interfaceProvisionSide": "PROVIDER_SIDE_INTERFACE",
+        "tiPrimitiveMessageExchangePattern": "FIRE_AND_FORGET",
+        "serviceInterfaceBinding": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+        "networkInterfaceBinding": "IPV4_SECURE_UNICAST",
+        "interfaceBindingDescription": "Information is exchanged in Protobuf format. Protocol buffers or Protobuf are Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data similar to XML, but smaller, faster, and simpler. ",
+        "operation": [
+          {
+            "name": "publishErroneousAFTNMessageData",
+            "description": "This operation sends the erroneous AFTN messages information for FDO correction.",
+            "idempotency": "NON_IDEMPOTENT",
+            "synchronicity": "ASYNCHRONOUS",
+            "precondition": "The consumer has to define off-line the priority for each kind of external message: -1: the message is referred.-0: the message is not referred.",
+            "tiProtocolMethod": [
+              "transfer"
+            ],
+            "processingConsideration": [
+              {
+                "name": "1",
+                "description": "The flightIdentifier is not processed by CCS for this operation (it is mentioned for interoperability purpose only)."
+              },
+              {
+                "name": "2",
+                "description": "When the operator uses the raw mode, the fields originatorAddress and receiverAddressees are ignored."
+              },
+              {
+                "name": "3",
+                "description": "The system performs syntactic and semantic validity checks on each message corrected by FDO."
+              },
+              {
+                "name": "4",
+                "description": "Whatever the type of ADEXP message to be corrected, CCS does not constraint the list of the decoded fields that can be allowed (see the ICAO reference documentation to check the ADEXP fields that can be provided in an IFPL message); the required checks are performed by Coflight"
+              },
+              {
+                "name": "5",
+                "description": "If the request is successful, the corrected message is sent for processing and the system deletes the corresponding erroneousAFTNMessage from its local database."
+              }
+            ],
+            "operationMessage": [
+              {
+                "name": "ErroneousAFTNMessage",
+                "description": "Erroneous AFTN message.",
+                "direction": "IN",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              },
+              {
+                "name": "void",
+                "description": "Predefined void",
+                "direction": "OUT",
+                "isFault": false,
+                "headers": "",
+                "body": ""
+              }
+            ]
+          }
+        ],
+        "behaviour": [
+          {
+            "name": "Service behaviour",
+            "description": "The detailed behavior of the service is provided in each operation dedicated section"
+          }
+        ]
+      }
+    ],
+    "serviceDescriptionReferences": {
+      "serviceDocument": [
+        {
+          "title": "PJ.16-03 Flight Data Distribution Service Description Document",
+          "description": "<p>Service Description Document (SDD) from PJ.16-03 on which the CCS Service is based<\/p>",
+          "version": "3.3",
+          "reference": "public:\/\/2020-07\/PJ16-03 SDD FlightDataDistribution (3_3).docx",
+          "documentType": "SERVICE_SPECIFICATION"
+        },
+        {
+          "title": "Flight Data Distribution Protobuf",
+          "description": "<p>Protobuf files describing the exchanged information<\/p>",
+          "version": "3.1.1.0",
+          "reference": "public:\/\/2020-07\/protobuf_fdd_0.zip",
+          "documentType": "MACHINE_READABLE_SERVICE_DESCRIPTION"
+        },
+        {
+          "title": "CCS Flight Data Distribution Service Description",
+          "description": "<p>Complete service specification<\/p>",
+          "version": "3.1.1.0",
+          "reference": "public:\/\/2020-07\/CCS_FDD_SSD_v3.1.1.0_0.docx",
+          "documentType": "SERVICE_SPECIFICATION"
+        }
+      ]
+    }
+  }
+}
