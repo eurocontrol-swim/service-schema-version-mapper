@@ -1,0 +1,11 @@
+[tool]
+[tool.poetry]
+name = "Registry-Service-Schema-Version-Mapper"
+version = "0.0.1"
+description = "A mapper between v0.0.3 of the SWIM Registry Schema and v1.0"
+authors = ["FJ Crabiffosse <francisco-javier.crabiffosse.ext@eurocontrol.int>"]
+[tool.poetry.dependencies]
+python = "^3.8"
+[tool.poetry.dependencies.jsonize]
+branch = "json-to-json"
+git = "https://github.com/eurocontrol-swim/jsonize"
