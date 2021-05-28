@@ -10,7 +10,7 @@ a previous version of the Service Description JSON Schema to a more recent one.
 This repository can be used directly in [repl.it](https://repl.it), which provides the user with a pre-configured 
 Python environment ready to use. To do so, it suffices to:
 
-1. Create a New repl and choose the option "Import from GitHub" and provide the following URL: [https://github.com/fjcrabiffosse/service-schema-version-mapper](https://github.com/fjcrabiffosse/service-schema-version-mapper)
+1. Create a New repl and choose the option "Import from GitHub" and provide the following URL: [https://github.com/eurocontrol-swim/service-schema-version-mapper](https://github.com/eurocontrol-swim/service-schema-version-mapper)
 2. Click the blue button "Import from GitHub".
 3. When the repository finishes loading into the repl.it environment you can click the "Run ▶" button which will execute the *mapping.py* script. The first time it runs it will automatically install some dependencies.
 
