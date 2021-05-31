@@ -24,10 +24,11 @@ def service_categorisation_transform(service_categorisation):
 
 def interface_transform(interfaces):
     transformed = []
-    for interface in interfaces:
-        interface.pop('behaviour')
-        interface['interfaceProtocol'] = []
-        transformed.append(interface)
+    if interfaces:
+        for interface in interfaces:
+            interface.pop('behaviour')
+            interface['interfaceProtocol'] = []
+            transformed.append(interface)
     return transformed
 
 
@@ -38,6 +39,8 @@ def service_provision_transform(service_provision):
 
 
 def point_of_contact_transform(points_of_contact):
+    if not points_of_contact:
+        return None
     for point_of_contact in points_of_contact:
         point_of_contact['role'] = point_of_contact.pop('description')
         point_of_contact['contactInformation'] = [{'type': 'EMAIL',
